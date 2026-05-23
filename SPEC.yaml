@@ -1,0 +1,85 @@
+---
+project: Juru
+version: '1.0.0'
+entity: Standalone — not Seventh (SG)
+description: Multi-tenant WhatsApp AI receptionist for Bali SMEs
+
+stack:
+  runtime: Node.js 20
+  whatsapp: '@whiskeysockets/baileys v7.0.0-rc13'
+  ai_model: gemini-2.5-flash
+  ai_sdk: '@google/generative-ai ^0.24.1'
+  database: better-sqlite3 (one DB per client)
+  container: Docker (one container per client)
+  api: FastAPI port 8090 (never 8080)
+  proxy: Bright Data residential rotating (one IP per client)
+  notifications: node-telegram-bot-api (one bot, platform-wide)
+  payments: Midtrans (client owns account, Juru sends link only)
+
+architecture:
+  mode_a: Cloud Baileys — client provides dedicated SIM, 
+           Juru runs session on DO SGP1
+  mode_b: Local phone bridge — client existing number, 
+           Android at premises, SGD 10/month extra
+
+constants:
+  port: 8090
+  port_banned: 8080
+  uvicorn_workers: 1
+  container_per_client: true
+  proxy_per_client: true
+  juru_holds_funds: false
+  booking_requires_explicit_confirm: true
+  handoff_always_active: true
+  separate_repo_from_gamingesense: true
+  agent_output_verified_by: raw terminal output only
+
+pricing:
+  starter: SGD 220
+  standard: SGD 350
+  premium: SGD 480
+
+targets:
+  month_12_clients: 235
+  month_12_mrr_sgd: 51700
+  gross_margin: 93-94%
+  capital_required_sgd: 500-800
+
+partner:
+  revenue_share_lifetime: 20%
+  revenue_share_year1_bonus: 10%
+  warm_leads: 400
+
+modules:
+  session_manager: src/whatsapp/session.js
+  jitter: src/whatsapp/jitter.js
+  ai_pipeline: src/ai/gemini.js
+  handoff: src/ai/handoff.js
+  faq_db: src/db/faq.js
+  proxy_pool: src/proxy/pool.js
+  booking_extractor: src/booking/extractor.js
+  booking_calendar: src/booking/calendar.js
+  api_server: api/server.py
+  onboard_script: scripts/onboard.sh
+  dockerfile: docker/Dockerfile
+  compose: docker/docker-compose.yml
+
+client_config_template: templates/config.yaml
+client_db_path: 'clients/{clientId}/juru.db'
+client_session_path: 'clients/{clientId}/session/'
+client_faq_path: 'clients/{clientId}/faq/'
+
+escalation_keywords:
+  - refund
+  - complaint
+  - accident
+  - manager
+  - lawsuit
+  - emergency
+
+languages_supported:
+  - id
+  - en
+  - ru
+  - zh
+  - fr

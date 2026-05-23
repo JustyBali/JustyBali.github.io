@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  juru_client:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../clients/${CLIENT_ID}:/app/clients/${CLIENT_ID}
+    env_file:
+      - ../clients/${CLIENT_ID}/.env
+    environment:
+      - CLIENT_ID=${CLIENT_ID}
+    restart: unless-stopped
+    networks:
+      - juru_net
+
+networks:
+  juru_net:
+    driver: bridge
+    internal: true

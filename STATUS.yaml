@@ -1,0 +1,56 @@
+---
+current_phase: Phase 1
+phase_status: In Progress
+last_updated: '2026-05-23'
+
+completed:
+  - session_manager
+  - jitter
+  - gemini_pipeline
+  - faq_db
+  - handoff
+  - proxy_pool
+  - booking_extractor
+  - booking_calendar
+  - dockerfile
+  - docker_compose
+  - onboard_script
+  - config_template
+  - fastapi_faq_editor
+  - conversation_logger
+  - multitenant_index
+  - language_detection
+  - out_of_hours_guard
+  - config_utils
+  - hours_utils
+  - lang_utils
+
+in_progress: []
+
+blocked:
+  - item: end_to_end_message_flow
+    reason: no dedicated SIM available
+  - item: telegram_handoff_live
+    reason: placeholder token, no TELEGRAM_CHAT_ID in .env
+  - item: dedicated_gemini_api_key
+    reason: currently sharing CasinoSense key
+  - item: proxy_live_credentials
+    reason: no Bright Data account yet
+  - item: do_sgp1_deployment
+    reason: needs DO credentials and clean droplet
+
+next_phase_goals:
+  - google_calendar_integration
+  - stripe_billing_prep
+  - partner_portal_react_dashboard
+  - prometheus_monitoring
+  - industry_faq_template_library
+  - multi_location_support
+
+immediate_actions:
+  - get_dedicated_SIM_for_test_client
+  - get_telegram_bot_token_from_botfather
+  - get_telegram_chat_id_from_userinfobot
+  - create_dedicated_gemini_api_key_in_ai_studio
+  - create_bright_data_account_for_proxy
+  - provision_do_sgp1_droplet

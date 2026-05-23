@@ -1,0 +1,29 @@
+{
+  "name": "juru",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^7.0.0-rc13",
+    "axios": "^1.16.1",
+    "better-sqlite3": "^12.10.0",
+    "dotenv": "^17.4.2",
+    "https-proxy-agent": "^9.0.0",
+    "js-yaml": "^4.1.1",
+    "node-telegram-bot-api": "^0.67.0",
+    "pino": "^10.3.1",
+    "qrcode-terminal": "^0.12.0",
+    "uuid": "^14.0.0"
+  }
+}
