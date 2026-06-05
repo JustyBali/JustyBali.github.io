@@ -1,5 +1,6 @@
 const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = require('@whiskeysockets/baileys');
 const path = require('path');
+const fs = require('fs');
 const pino = require('pino');
 const qrcode = require('qrcode-terminal');
 
@@ -12,6 +13,11 @@ const qrcode = require('qrcode-terminal');
  */
 async function createSession(clientId, onMessage) {
     const sessionDir = path.join(process.cwd(), 'clients', clientId, 'session');
+
+    // Ensure session directory exists
+    if (!fs.existsSync(sessionDir)) {
+        fs.mkdirSync(sessionDir, { recursive: true });
+    }
     
     // Initialize authentication state stored in client-specific folder
     const { state, saveCreds } = await useMultiFileAuthState(sessionDir);
@@ -47,15 +53,26 @@ async function createSession(clientId, onMessage) {
         } else if (connection === 'close') {
             const statusCode = lastDisconnect?.error?.output?.statusCode;
             console.log(`[${clientId}] Disconnect: Connection closed. Status code: ${statusCode}`);
-            
-            // Auto-reconnect on DisconnectReason.connectionClosed only
-            if (statusCode === DisconnectReason.connectionClosed) {
-                console.log(`[${clientId}] Auto-reconnecting on DisconnectReason.connectionClosed...`);
-                createSession(clientId, onMessage);
-            } else if (statusCode === DisconnectReason.loggedOut) {
-                console.log(`[${clientId}] Logged out. Stopping. Will not reconnect.`);
+
+            if (statusCode === DisconnectReason.loggedOut) {
+                // Permanent — do not reconnect
+                console.log(`[${clientId}] Logged out. Not reconnecting.`);
+
+            } else if (statusCode === 515) {
+                // 515 = WhatsApp signals "restart with saved credentials" (fires after QR scan)
+                // Do NOT clear session files — credentials were just saved and must be preserved
+                console.log(`[${clientId}] Status 515 — restarting with saved credentials...`);
+                setTimeout(() => createSession(clientId, onMessage), 3000);
+
+            } else if (statusCode === DisconnectReason.connectionClosed) {
+                // Normal closure — reconnect after delay
+                console.log(`[${clientId}] connectionClosed. Reconnecting in 3s...`);
+                setTimeout(() => createSession(clientId, onMessage), 3000);
+
             } else {
-                console.log(`[${clientId}] Disconnected with code ${statusCode}. Not reconnecting per requirements.`);
+                // All other disconnect reasons — reconnect after delay
+                console.log(`[${clientId}] Disconnected with code ${statusCode}. Reconnecting in 3s...`);
+                setTimeout(() => createSession(clientId, onMessage), 3000);
             }
         }
     });

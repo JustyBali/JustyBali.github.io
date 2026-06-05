@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Justy AI - Bookings Management</title>
+<!-- Google Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#3c2e17",
+                    "secondary-fixed": "#f0e1c4",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-background": "#1c1b1b",
+                    "primary": "#0d353b",
+                    "secondary-fixed-dim": "#d3c5a9",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#221b09",
+                    "surface-variant": "#e5e2e1",
+                    "inverse-on-surface": "#f3f0ef",
+                    "secondary-container": "#eddec1",
+                    "tertiary-fixed": "#f7dfbe",
+                    "on-surface-variant": "#414849",
+                    "secondary": "#685d46",
+                    "on-secondary-container": "#6c614a",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#fcf9f8",
+                    "tertiary-fixed-dim": "#dac3a3",
+                    "primary-fixed": "#c2e9f0",
+                    "on-secondary": "#ffffff",
+                    "surface": "#fcf9f8",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#a7cdd4",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#313030",
+                    "tertiary-container": "#54442c",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#274c52",
+                    "on-primary-container": "#96bbc2",
+                    "outline": "#71787a",
+                    "on-surface": "#1c1b1b",
+                    "surface-tint": "#40646a",
+                    "primary-container": "#274c52",
+                    "surface-dim": "#dcd9d9",
+                    "on-secondary-fixed-variant": "#4f4630",
+                    "surface-bright": "#fcf9f8",
+                    "on-tertiary-fixed": "#251905",
+                    "on-tertiary-fixed-variant": "#54442c",
+                    "inverse-primary": "#a7cdd4",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae7e7",
+                    "on-primary-fixed": "#001f24",
+                    "on-tertiary-container": "#c8b293",
+                    "outline-variant": "#c1c8c9",
+                    "surface-container": "#f0eded"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "sm": "12px",
+                    "md": "24px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "container-max": "1200px",
+                    "xl": "80px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Libre Caslon Text"],
+                    "headline-sm": ["Libre Caslon Text"],
+                    "label-md": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Libre Caslon Text"],
+                    "body-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(13, 53, 59, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c8c9;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col border-r border-outline-variant/30 bg-surface-container-low w-64 z-50">
+<div class="px-6 py-8">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg overflow-hidden border border-primary/10 shadow-sm">
+<img alt="Justy Logo - Brand Palette" class="w-12 h-12 object-contain" src="https://ogsalliance.com/images/justylogo.png" />
+</div>
+<div>
+<h1 class="text-headline-sm font-headline-md font-bold text-primary-container">Justy</h1>
+<p class="font-label-md text-[10px] uppercase tracking-widest text-on-surface-variant">Hospitality AI</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary-container hover:bg-secondary-container transition-all rounded-lg font-label-md" href="overview.html">
+<span class="material-symbols-outlined">dashboard</span> Overview
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary-container hover:bg-secondary-container transition-all rounded-lg font-label-md" href="chat.html">
+<span class="material-symbols-outlined">chat_bubble</span> Conversations
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary-container hover:bg-secondary-container transition-all rounded-lg font-label-md" href="faq.html">
+<span class="material-symbols-outlined">quiz</span> FAQ Editor
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-container font-semibold border-r-4 border-primary-container bg-secondary-container/40 font-label-md transition-all active:scale-95" href="booking.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span> Bookings
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary-container hover:bg-secondary-container transition-all rounded-lg font-label-md" href="settings.html">
+<span class="material-symbols-outlined">settings</span> Settings
+        </a>
+</nav>
+<div class="p-4 border-t border-outline-variant/20">
+<button class="w-full bg-primary-container text-on-primary py-3 px-4 rounded-xl font-label-md flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md">
+<span class="material-symbols-outlined">support_agent</span> Live Chat Support
+        </button>
+<div class="mt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-highest rounded-lg font-label-md text-sm" href="#">
+<span class="material-symbols-outlined">help</span> Help Center
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-error hover:bg-error-container/20 rounded-lg font-label-md text-sm" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+            </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 flex justify-between items-center px-6 py-4 bg-surface border-b border-outline-variant/20 h-16">
+<div class="flex items-center gap-4">
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="Search bookings..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-primary-container text-on-primary px-6 py-2 rounded-full font-label-md shadow-sm transition-opacity active:opacity-80">
+                New Appointment
+            </button>
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9EaW_iQy9MqoVJzBPeX87H98EScOWpzRqkt1IstbsvmoscpXa0VamX-tzUODskY6SV1BczKUD66p8D8bkjVz1DDf5jCLA-pmMg3opYouIrVB9It8HynIpsrin6qhLRlUd_pJW0KW-ffKq75kdFw8hd4lVs58XdlkMWHhBB1bFg2a7DrExhEDzrtV1CSJx0t5xT9KCw1kdpciqR0eZ3O_7qFzNWGyjZy-xYM8AcZmr2QPkjJPTwUN-0kT05xdmMKrVQjhlFEQoDzBt"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="flex-1 overflow-y-auto p-lg bg-background">
+<div class="max-w-7xl mx-auto space-y-md">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-display-lg font-headline-md text-primary-container">Appointment Bookings</h2>
+<p class="text-body-lg text-on-surface-variant mt-2 italic">Manage and confirm serenity sessions for your guests.</p>
+</div>
+<div class="flex gap-3">
+<div class="flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<input class="border-none p-0 text-label-md font-label-md focus:ring-0 bg-transparent text-primary" type="date" value="2023-11-24"/>
+</div>
+<select class="bg-white px-4 py-2 rounded-xl shadow-sm border border-outline-variant/30 text-label-md font-label-md focus:ring-0 text-primary">
+<option>All Statuses</option>
+<option>Pending</option>
+<option>Confirmed</option>
+</select>
+</div>
+</div>
+<!-- Bento Grid Layout for Summary Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="glass-card p-6 rounded-xl shadow-sm flex flex-col justify-between border-t-4 border-t-primary-fixed-dim">
+<span class="text-label-md uppercase tracking-wider text-on-surface-variant opacity-70">Total Bookings Today</span>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-headline-md font-headline-md text-primary-container">24</span>
+<span class="text-label-md text-green-700 font-bold">+12%</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl shadow-sm flex flex-col justify-between border-t-4 border-t-error/30">
+<span class="text-label-md uppercase tracking-wider text-on-surface-variant opacity-70">Pending Confirmation</span>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-headline-md font-headline-md text-error">8</span>
+<span class="material-symbols-outlined text-error text-xl">priority_high</span>
+</div>
+</div>
+<div class="p-6 rounded-xl shadow-lg md:col-span-2 relative overflow-hidden bg-primary-container text-on-primary">
+<div class="relative z-10">
+<span class="text-label-md uppercase tracking-wider opacity-80">Projected Revenue</span>
+<div class="mt-2">
+<span class="text-headline-md font-headline-md text-white">$3,450.00</span>
+</div>
+</div>
+<!-- Abstract Background Decoration -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-secondary-fixed/10 rounded-full blur-3xl"></div>
+<div class="absolute right-0 top-0 opacity-10 p-4">
+<span class="material-symbols-outlined text-[100px]">payments</span>
+</div>
+</div>
+</div>
+<!-- Main Bookings Table -->
+<div class="bg-white rounded-xl shadow-sm overflow-hidden border border-outline-variant/30">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-secondary-container/30">
+<th class="px-6 py-4 font-label-md text-primary uppercase tracking-widest text-[11px]">Customer</th>
+<th class="px-6 py-4 font-label-md text-primary uppercase tracking-widest text-[11px]">Service</th>
+<th class="px-6 py-4 font-label-md text-primary uppercase tracking-widest text-[11px]">Schedule</th>
+<th class="px-6 py-4 font-label-md text-primary uppercase tracking-widest text-[11px]">Party</th>
+<th class="px-6 py-4 font-label-md text-primary uppercase tracking-widest text-[11px]">Deposit</th>
+<th class="px-6 py-4 font-label-md text-primary uppercase tracking-widest text-[11px] text-center">Status</th>
+<th class="px-6 py-4 font-label-md text-primary uppercase tracking-widest text-[11px] text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1: Pending -->
+<tr class="hover:bg-secondary-container/10 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed text-primary-container flex items-center justify-center font-bold font-headline-md">JS</div>
+<div>
+<p class="font-label-md text-on-surface">Jasmine Smith</p>
+<p class="text-[12px] text-on-surface-variant">+62 812-3456-7890</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-label-md">Balinese Massage</p>
+<p class="text-[12px] text-on-surface-variant">60min Session</p>
+</td>
+<td class="px-6 py-5">
+<p class="font-label-md">Nov 24, 2023</p>
+<p class="text-[12px] text-on-surface-variant">14:00 - 15:00</p>
+</td>
+<td class="px-6 py-5 font-label-md">2 Adults</td>
+<td class="px-6 py-5">
+<span class="font-label-md text-on-surface">$50.00</span>
+<span class="block text-[9px] text-error font-bold uppercase tracking-tighter">Pending</span>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-fixed-variant text-[11px] font-bold">
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="bg-primary-container text-on-primary px-4 py-2 rounded-lg font-label-md hover:brightness-110 transition-all shadow-sm active:scale-95">Confirm</button>
+</td>
+</tr>
+<!-- Row 2: Confirmed -->
+<tr class="hover:bg-secondary-container/10 transition-colors bg-surface-container-low/20">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed text-tertiary flex items-center justify-center font-bold font-headline-md">ML</div>
+<div>
+<p class="font-label-md text-on-surface">Marcus Laurent</p>
+<p class="text-[12px] text-on-surface-variant">+62 811-9876-5432</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-label-md">Floral Bath Ritual</p>
+<p class="text-[12px] text-on-surface-variant">90min Premium</p>
+</td>
+<td class="px-6 py-5">
+<p class="font-label-md">Nov 24, 2023</p>
+<p class="text-[12px] text-on-surface-variant">11:00 - 12:30</p>
+</td>
+<td class="px-6 py-5 font-label-md">1 Adult</td>
+<td class="px-6 py-5">
+<span class="font-label-md text-on-surface">$120.00</span>
+<span class="block text-[9px] text-green-700 font-bold uppercase tracking-tighter">Paid</span>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-[11px] font-bold">
+                                        Confirmed
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-on-surface-variant hover:text-primary-container p-2 transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-6 py-4 bg-surface-container-low/50 flex justify-between items-center border-t border-outline-variant/20">
+<p class="text-label-md text-on-surface-variant text-sm">Showing 1 to 2 of 24 entries</p>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant/30 rounded-lg text-on-surface-variant hover:bg-white disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 border border-outline-variant/30 rounded-lg text-on-surface-variant hover:bg-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Daily View / Asymmetric Component -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-12">
+<div class="lg:col-span-2 glass-card p-8 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-sm text-primary-container">Daily Schedule Heatmap</h3>
+<div class="flex gap-2 items-center">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">High Volume</span>
+</div>
+</div>
+<div class="h-48 flex items-end justify-between gap-2">
+<div class="w-full bg-secondary-fixed/30 rounded-t-sm h-24 relative group cursor-pointer">
+<div class="absolute bottom-0 w-full bg-primary/20 h-12 rounded-t-sm transition-all group-hover:h-16"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-on-surface-variant">08AM</span>
+</div>
+<div class="w-full bg-secondary-fixed/30 rounded-t-sm h-32 relative group cursor-pointer">
+<div class="absolute bottom-0 w-full bg-primary/40 h-20 rounded-t-sm transition-all group-hover:h-24"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-on-surface-variant">10AM</span>
+</div>
+<div class="w-full bg-secondary-fixed/30 rounded-t-sm h-40 relative group cursor-pointer">
+<div class="absolute bottom-0 w-full bg-primary h-36 rounded-t-sm transition-all group-hover:h-38"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-on-surface-variant font-bold">12PM</span>
+</div>
+<div class="w-full bg-secondary-fixed/30 rounded-t-sm h-36 relative group cursor-pointer">
+<div class="absolute bottom-0 w-full bg-primary/60 h-28 rounded-t-sm transition-all group-hover:h-30"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-on-surface-variant">02PM</span>
+</div>
+<div class="w-full bg-secondary-fixed/30 rounded-t-sm h-44 relative group cursor-pointer">
+<div class="absolute bottom-0 w-full bg-primary h-42 rounded-t-sm transition-all group-hover:h-44"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-on-surface-variant font-bold">04PM</span>
+</div>
+<div class="w-full bg-secondary-fixed/30 rounded-t-sm h-28 relative group cursor-pointer">
+<div class="absolute bottom-0 w-full bg-primary/20 h-10 rounded-t-sm transition-all group-hover:h-12"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-on-surface-variant">06PM</span>
+</div>
+</div>
+</div>
+<div class="bg-primary-container p-8 rounded-xl text-on-primary flex flex-col justify-between relative overflow-hidden shadow-lg">
+<div class="relative z-10">
+<h3 class="font-headline-sm mb-2">Manager's Insight</h3>
+<p class="text-body-md opacity-90 leading-relaxed italic">Peak booking hours detected between 12:00 PM and 4:00 PM today. Ensure all meditation rooms are prepped with fresh lotus oils.</p>
+</div>
+<div class="relative z-10 mt-8">
+<button class="bg-secondary-fixed text-primary-container px-6 py-3 rounded-lg font-label-md w-full transition-transform active:scale-95 shadow-md">Optimize Staff Schedule</button>
+</div>
+<!-- Texture Background -->
+<div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARgp98LEaahiiOs7VWfWZCLnIw0hN93img_mg6mvTU6g_CKQmuW9UCP9FyJbvzens7SuMtJzyf-tYG3f3km0rnWaDbWhl9sajPnrp-GZS8ShutD9ErbBY9JTUWmdQdM9rY2_6eyDvmdKUNIxHX9i1oLCCN1LETGC0eOR8fqYUmW-dAkWBV0-RLTINtPQdH6IyDWEwoveppQ_3_UIYpqArCeHYKPeikr_4w30mVXvpelQOTGjRB7Lcxm-6yTIg9tgFZ1l6XUtBEwALe');"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+    document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('mousedown', () => {
+            button.classList.add('scale-95');
+        });
+        button.addEventListener('mouseup', () => {
+            button.classList.remove('scale-95');
+        });
+        button.addEventListener('mouseleave', () => {
+            button.classList.remove('scale-95');
+        });
+    });
+
+    document.querySelectorAll('button').forEach(btn => {
+        if(btn.textContent.trim() === 'Confirm') {
+            btn.onclick = () => {
+                const row = btn.closest('tr');
+                const statusBadge = row.querySelector('.bg-secondary-container');
+                if(statusBadge) {
+                    statusBadge.classList.replace('bg-secondary-container', 'bg-primary-fixed');
+                    statusBadge.classList.replace('text-on-secondary-fixed-variant', 'text-on-primary-fixed-variant');
+                    statusBadge.textContent = 'Confirmed';
+                    btn.classList.add('hidden');
+                    const actionCell = row.querySelector('td:last-child');
+                    actionCell.innerHTML = '<button class="text-on-surface-variant hover:text-primary-container p-2 transition-colors"><span class="material-symbols-outlined">more_vert</span></button>';
+                }
+            }
+        }
+    });
+</script>
+</body></html>

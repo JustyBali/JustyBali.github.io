@@ -140,16 +140,17 @@ ${aiResult.text || ''}`;
         }
     };
 
-    console.log(`[handoff] Attempting to send Telegram notification to ${config.handoff_telegram_id || 'no-id'}...`);
-    if (bot && config.handoff_telegram_id) {
+    const telegramChatId = process.env.TELEGRAM_CHAT_ID || config.handoff_telegram_id;
+    console.log(`[handoff] Attempting to send Telegram notification to ${telegramChatId || 'no-id'}...`);
+    if (bot && telegramChatId) {
         try {
-            await bot.sendMessage(config.handoff_telegram_id, messageText, options);
-            console.log(`[handoff] Telegram notification successfully sent to ${config.handoff_telegram_id}`);
+            await bot.sendMessage(telegramChatId, messageText, options);
+            console.log(`[handoff] Telegram notification successfully sent to ${telegramChatId}`);
         } catch (err) {
             console.error(`[handoff] Telegram API call failed:`, err.message);
         }
     } else {
-        console.warn(`[handoff] Skipping Telegram message send (bot or handoff_telegram_id missing).`);
+        console.warn(`[handoff] Skipping Telegram message send (bot or telegramChatId missing).`);
     }
 
     // Reply to customer via WhatsApp

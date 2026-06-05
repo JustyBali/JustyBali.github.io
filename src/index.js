@@ -14,7 +14,7 @@ const { initConversations, logConversation } = require('./db/conversations');
 const { loadConfig } = require('./utils/config');
 const { isWithinHours, getOutOfHoursMessage } = require('./utils/hours');
 
-const CLIENT_ID = 'test_client';
+const CLIENT_ID = process.env.CLIENT_ID || 'client_zero';
 
 // Load config using the custom loadConfig utility
 let config = {};
@@ -145,6 +145,11 @@ async function onMessage(message, sock) {
     const history = getHistory(jid);
     const aiResult = await generateResponse(config, faqContext, history, text);
 
+    // Append incoming user message to history NOW so checkAndHandoff can include it
+    // in the Telegram notification's "Last 3 messages" block.
+    history.push({ role: 'user', parts: [{ text }] });
+    while (history.length > 20) { history.shift(); }
+
     // 4. Call checkAndHandoff
     const handoffResult = await checkAndHandoff(config, text, aiResult, history, sock, jid);
 
@@ -153,8 +158,9 @@ async function onMessage(message, sock) {
         if (aiResult.text) {
             try {
                 await humanDelay(sock, jid, aiResult.text);
-                // Update in-memory history on successful response
-                updateHistory(jid, text, aiResult.text);
+                // Append AI reply to history after successful send
+                history.push({ role: 'model', parts: [{ text: aiResult.text }] });
+                while (history.length > 20) { history.shift(); }
             } catch (err) {
                 console.error(`[index] Error sending message via socket:`, err.message);
             }

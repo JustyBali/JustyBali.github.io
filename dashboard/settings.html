@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Justy AI - Client Dashboard Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "tertiary": "#3c2e17",
+                "secondary-fixed": "#f0e1c4",
+                "surface-container-highest": "#e5e2e1",
+                "on-background": "#1c1b1b",
+                "primary": "#0d353b",
+                "secondary-fixed-dim": "#d3c5a9",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed": "#221b09",
+                "surface-variant": "#e5e2e1",
+                "inverse-on-surface": "#f3f0ef",
+                "secondary-container": "#eddec1",
+                "tertiary-fixed": "#f7dfbe",
+                "on-surface-variant": "#414849",
+                "secondary": "#685d46",
+                "on-secondary-container": "#6c614a",
+                "surface-container-low": "#f6f3f2",
+                "surface-container-lowest": "#ffffff",
+                "background": "#fcf9f8",
+                "tertiary-fixed-dim": "#dac3a3",
+                "primary-fixed": "#c2e9f0",
+                "on-secondary": "#ffffff",
+                "surface": "#fcf9f8",
+                "on-error": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "primary-fixed-dim": "#a7cdd4",
+                "error-container": "#ffdad6",
+                "inverse-surface": "#313030",
+                "tertiary-container": "#54442c",
+                "error": "#ba1a1a",
+                "on-primary-fixed-variant": "#274c52",
+                "on-primary-container": "#96bbc2",
+                "outline": "#71787a",
+                "on-surface": "#1c1b1b",
+                "surface-tint": "#40646a",
+                "primary-container": "#274c52",
+                "surface-dim": "#dcd9d9",
+                "on-secondary-fixed-variant": "#4f4630",
+                "surface-bright": "#fcf9f8",
+                "on-tertiary-fixed": "#251905",
+                "on-tertiary-fixed-variant": "#54442c",
+                "inverse-primary": "#a7cdd4",
+                "on-primary": "#ffffff",
+                "surface-container-high": "#eae7e7",
+                "on-primary-fixed": "#001f24",
+                "on-tertiary-container": "#c8b293",
+                "outline-variant": "#c1c8c9",
+                "surface-container": "#f0eded",
+                "brand-subtle": "#e7d8bb"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "lg": "48px",
+                "sm": "12px",
+                "md": "24px",
+                "base": "8px",
+                "xs": "4px",
+                "container-max": "1200px",
+                "xl": "80px",
+                "gutter": "24px"
+        },
+        "fontFamily": {
+                "headline-md": [
+                        "Libre Caslon Text"
+                ],
+                "headline-sm": [
+                        "Libre Caslon Text"
+                ],
+                "label-md": [
+                        "Hanken Grotesk"
+                ],
+                "display-lg-mobile": [
+                        "Libre Caslon Text"
+                ],
+                "body-md": [
+                        "Hanken Grotesk"
+                ],
+                "body-lg": [
+                        "Hanken Grotesk"
+                ],
+                "display-lg": [
+                        "Libre Caslon Text"
+                ]
+        },
+        "fontSize": {
+                "headline-md": [
+                        "32px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-sm": [
+                        "24px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "1",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "36px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .tonal-elevation-1 {
+            box-shadow: 0px 2px 4px rgba(13, 53, 59, 0.04);
+        }
+        input:focus {
+            outline: none !important;
+            border-color: #274c52 !important;
+            box-shadow: 0 0 0 2px rgba(39, 76, 82, 0.1);
+        }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col border-r border-outline-variant/30 bg-primary-container w-64 z-50 shadow-sm">
+<div class="p-6 flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<img alt="Justy AI Logo" class="w-10 h-10 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXLJkeGk0szdD_zpqcOyj04fe0mH_Vk0goQxzYpaHY2V6gsNrynGGlMf4jsy1viHmS3SSFZ187Fm-umoi25MNx5hJwAdqwil7GLC7gGAgXTBzeEZLo2USaIoDYIq24P1m8P44NwqSs9eESJlb9PpvU_Ek9YCmixYJIDLRHcpSHKDDqfMPcTMUVaxQd718ZGsXDGxXhM0qrIm9ouzsvDiDI4dftwZdZNUYdcl5zx2etJllIPy9onT8Vix0HLsPz9KGGkyZpQX4SHLYe"/>
+<div>
+<h1 class="text-headline-sm font-headline-md font-bold text-on-primary-container leading-tight">Justy</h1>
+<p class="text-[10px] font-label-md text-on-primary-container/70 uppercase tracking-widest">AI Hospitality Bot</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 mt-4 px-3 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 hover:text-on-primary-container transition-colors hover:bg-white/10 rounded" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 hover:text-on-primary-container transition-colors hover:bg-white/10 rounded" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-md text-label-md">Conversations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 hover:text-on-primary-container transition-colors hover:bg-white/10 rounded" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span class="font-label-md text-label-md">FAQ Editor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/80 hover:text-on-primary-container transition-colors hover:bg-white/10 rounded" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</a>
+<!-- Active Navigation State -->
+<a class="flex items-center gap-3 px-4 py-3 text-brand-subtle font-semibold bg-white/5 border-l-4 border-brand-subtle" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-6 py-6 border-t border-white/10">
+<button class="w-full bg-brand-subtle text-primary-container py-3 px-4 rounded font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+                Live Chat Support
+            </button>
+</div>
+<div class="p-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:bg-white/5 rounded transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-red-300 hover:bg-error/10 rounded transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 flex justify-between items-center px-8 py-4 bg-surface border-b border-outline-variant/30 h-16">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Spa Manager Dashboard</h2>
+<div class="h-6 w-[1px] bg-outline-variant/30 mx-2"></div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span class="font-label-md text-label-md">Configuration</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full transition-colors text-on-surface-variant" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full transition-colors text-on-surface-variant" data-icon="account_circle">account_circle</button>
+</div>
+<button class="bg-primary-container text-on-primary px-4 py-2 rounded font-label-md text-label-md flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-lg">add</span>
+                    New Appointment
+                </button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 overflow-y-auto p-8 max-w-5xl mx-auto w-full">
+<div class="mb-10">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Bot Configuration</h3>
+<p class="text-on-surface-variant font-body-md">Manage your Justy AI persona, operational parameters, and technical integrations.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Core Identity Card -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest rounded p-8 tonal-elevation-1 border border-outline-variant/20">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<span class="p-2 bg-primary-container/10 text-primary-container rounded">
+<span class="material-symbols-outlined">badge</span>
+</span>
+<h4 class="font-headline-sm text-on-surface">Identity &amp; Core Profile</h4>
+</div>
+<span class="bg-brand-subtle text-primary-container px-3 py-1 rounded-full font-label-md text-[10px] uppercase tracking-wider">Mode: A/B</span>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-on-surface-variant uppercase text-[11px]">Business Name</label>
+<div class="bg-surface-container-low px-4 py-3 rounded border border-outline-variant/30 text-on-surface-variant cursor-not-allowed flex items-center justify-between">
+<span class="font-body-md">Serene Bali Spa &amp; Wellness</span>
+<span class="material-symbols-outlined text-sm opacity-50">lock</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-on-surface-variant uppercase text-[11px]">Persona Name</label>
+<div class="bg-surface-container-low px-4 py-3 rounded border border-outline-variant/30 text-on-surface-variant cursor-not-allowed flex items-center justify-between">
+<span class="font-body-md">Justy</span>
+<span class="material-symbols-outlined text-sm opacity-50">lock</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-on-surface-variant uppercase text-[11px]">Timezone</label>
+<div class="bg-surface-container-low px-4 py-3 rounded border border-outline-variant/30 text-on-surface-variant cursor-not-allowed">
+<span class="font-body-md">Asia/Makassar (GMT+8)</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-on-surface-variant uppercase text-[11px]">Languages</label>
+<div class="flex gap-2">
+<span class="bg-brand-subtle text-primary-container px-3 py-2 rounded font-label-md text-[12px]">English</span>
+<span class="bg-brand-subtle text-primary-container px-3 py-2 rounded font-label-md text-[12px]">Indonesian</span>
+<span class="bg-brand-subtle text-primary-container px-3 py-2 rounded font-label-md text-[12px]">Mandarin</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Confidence Threshold Card -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest rounded p-8 tonal-elevation-1 border border-outline-variant/20 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="p-2 bg-primary-container/10 text-primary-container rounded">
+<span class="material-symbols-outlined">psychology</span>
+</span>
+<h4 class="font-headline-sm text-on-surface">Confidence</h4>
+</div>
+<p class="text-body-md text-on-surface-variant mb-6 text-sm">Determines how sure Justy must be before providing an answer without human escalation.</p>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-on-surface">Threshold</span>
+<span class="font-headline-sm text-primary-container" id="threshold-val">85%</span>
+</div>
+<input class="w-full h-1 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-primary-container" id="threshold-slider" max="99" min="50" type="range" value="85"/>
+<div class="flex justify-between text-[10px] uppercase font-label-md text-on-surface-variant opacity-60">
+<span class="">Cautious</span>
+<span class="">Dynamic</span>
+<span class="">Confident</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Hours Card -->
+<div class="col-span-12 md:col-span-7 bg-surface-container-lowest rounded p-8 tonal-elevation-1 border border-outline-variant/20">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<span class="p-2 bg-primary-container/10 text-primary-container rounded">
+<span class="material-symbols-outlined">schedule</span>
+</span>
+<h4 class="font-headline-sm text-on-surface">Working Hours</h4>
+</div>
+<button class="text-primary-container font-label-md text-sm hover:underline">Apply to all days</button>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-12 items-center gap-4 group">
+<span class="col-span-3 font-label-md text-on-surface">Mon - Fri</span>
+<div class="col-span-9 flex items-center gap-3">
+<input class="bg-surface-container-low border border-outline-variant/40 rounded px-3 py-2 text-sm focus:ring-0" type="time" value="09:00"/>
+<span class="text-on-surface-variant">to</span>
+<input class="bg-surface-container-low border border-outline-variant/40 rounded px-3 py-2 text-sm focus:ring-0" type="time" value="21:00"/>
+<div class="flex items-center gap-2 ml-auto">
+<span class="text-[10px] text-on-surface-variant font-label-md uppercase">Active</span>
+<div class="w-10 h-5 bg-primary-container/20 rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-primary-container rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-12 items-center gap-4">
+<span class="col-span-3 font-label-md text-on-surface">Saturday</span>
+<div class="col-span-9 flex items-center gap-3">
+<input class="bg-surface-container-low border border-outline-variant/40 rounded px-3 py-2 text-sm" type="time" value="10:00"/>
+<span class="text-on-surface-variant">to</span>
+<input class="bg-surface-container-low border border-outline-variant/40 rounded px-3 py-2 text-sm" type="time" value="22:00"/>
+<div class="flex items-center gap-2 ml-auto">
+<span class="text-[10px] text-on-surface-variant font-label-md uppercase">Active</span>
+<div class="w-10 h-5 bg-primary-container/20 rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-primary-container rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-12 items-center gap-4">
+<span class="col-span-3 font-label-md text-on-surface">Sunday</span>
+<div class="col-span-9 flex items-center gap-3">
+<span class="text-on-surface-variant italic text-sm py-2">Business Closed</span>
+<div class="flex items-center gap-2 ml-auto">
+<span class="text-[10px] text-on-surface-variant font-label-md uppercase">Inactive</span>
+<div class="w-10 h-5 bg-surface-container-high rounded-full relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-outline rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- API Connectivity Card -->
+<div class="col-span-12 md:col-span-5 bg-surface-container-lowest rounded p-8 tonal-elevation-1 border border-outline-variant/20">
+<div class="flex items-center gap-3 mb-8">
+<span class="p-2 bg-primary-container/10 text-primary-container rounded">
+<span class="material-symbols-outlined">api</span>
+</span>
+<h4 class="font-headline-sm text-on-surface">API Connection</h4>
+</div>
+<div class="flex flex-col gap-4">
+<label class="font-label-md text-on-surface-variant uppercase text-[11px]">Production API Key</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-4 py-3 text-sm tracking-widest text-on-surface-variant pr-24" readonly="" type="password" value="sk_justy_live_82937hx92837dh82"/>
+<div class="absolute right-2 top-1.5 flex gap-1">
+<button class="p-1.5 hover:bg-surface-container rounded transition-colors text-on-surface-variant" onclick="toggleVisibility(this)">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-surface-container rounded transition-colors text-on-surface-variant" onclick="copyToClipboard(this)">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+</button>
+</div>
+</div>
+<div class="mt-4 p-4 bg-brand-subtle/30 rounded border border-brand-subtle flex gap-3">
+<span class="material-symbols-outlined text-primary-container">info</span>
+<p class="text-xs text-on-secondary-fixed-variant leading-relaxed">Your API key is used for secure communications between your website and the Justy AI engine. Never share this key publicly.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Footer Actions -->
+<div class="mt-12 pt-8 border-t border-outline-variant/20 flex justify-end gap-4">
+<button class="px-6 py-3 border border-outline-variant text-on-surface-variant rounded font-label-md text-sm hover:bg-surface-container transition-colors">Discard Changes</button>
+<button class="px-10 py-3 bg-primary-container text-on-primary rounded font-label-md text-sm shadow-md hover:opacity-90 active:scale-95 transition-all">Save Changes</button>
+</div>
+</div>
+</main>
+<script>
+        // Interactive Slider
+        const slider = document.getElementById('threshold-slider');
+        const val = document.getElementById('threshold-val');
+        slider.addEventListener('input', (e) => {
+            val.textContent = e.target.value + '%';
+        });
+
+        // Copy to clipboard mock
+        function copyToClipboard(btn) {
+            const icon = btn.querySelector('.material-symbols-outlined');
+            const originalIcon = icon.innerText;
+            icon.innerText = 'check';
+            icon.classList.add('text-primary-container');
+            setTimeout(() => {
+                icon.innerText = originalIcon;
+                icon.classList.remove('text-primary-container');
+            }, 2000);
+        }
+
+        // Toggle API Visibility
+        function toggleVisibility(btn) {
+            const input = btn.closest('.relative').querySelector('input');
+            const icon = btn.querySelector('.material-symbols-outlined');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        }
+</script>
+</body></html>

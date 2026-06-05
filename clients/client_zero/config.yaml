@@ -1,0 +1,13 @@
+business_name: 'Rumah Bali Spa'
+persona_name: 'Sari'
+persona: 'warm, professional, light Bahasa informality'
+languages: ['id','en','ru','zh','fr']
+confidence_threshold: 0.75
+handoff_telegram_id: '8770162475'
+working_hours: '09:00-21:00'
+timezone: 'Asia/Makassar'
+booking:
+  services: ['60min massage','90min scrub','couples package']
+  deposit_required: true
+  deposit_pct: 30
+api_key: 'test-key-123'

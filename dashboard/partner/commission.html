@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Justy Partner Portal - Commission</title>
+    <!-- Tailwind CSS & Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#3c2e17",
+                        "secondary-fixed": "#f0e1c4",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-background": "#1c1b1b",
+                        "primary": "#0d353b",
+                        "secondary-fixed-dim": "#d3c5a9",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#221b09",
+                        "surface-variant": "#e5e2e1",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary-container": "#eddec1",
+                        "tertiary-fixed": "#f7dfbe",
+                        "on-surface-variant": "#414849",
+                        "secondary": "#685d46",
+                        "on-secondary-container": "#6c614a",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fcf9f8",
+                        "tertiary-fixed-dim": "#dac3a3",
+                        "primary-fixed": "#c2e9f0",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#a7cdd4",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#313030",
+                        "tertiary-container": "#54442c",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#274c52",
+                        "on-primary-container": "#96bbc2",
+                        "outline": "#71787a",
+                        "on-surface": "#1c1b1b",
+                        "surface-tint": "#40646a",
+                        "primary-container": "#274c52",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed-variant": "#4f4630",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary-fixed": "#251905",
+                        "on-tertiary-fixed-variant": "#54442c",
+                        "inverse-primary": "#a7cdd4",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary-container": "#c8b293",
+                        "outline-variant": "#c1c8c9",
+                        "surface-container": "#f0eded",
+                        "brand-gold": "#dcc5a5",
+                        "brand-cream": "#e7d8bb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "container-max": "1200px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Libre Caslon Text"],
+                        "headline-sm": ["Libre Caslon Text"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Libre Caslon Text"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #fcf9f8;
+            color: #1c1b1b;
+        }
+        .tonal-shadow {
+            box-shadow: 0px 4px 12px rgba(13, 53, 59, 0.04);
+        }
+        .bento-card {
+            background-color: #ffffff;
+            border-radius: 4px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(193, 200, 201, 0.3);
+        }
+        .bento-card:hover {
+            box-shadow: 0px 12px 24px rgba(13, 53, 59, 0.08);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+    <!-- SideNavBar -->
+    <aside class="fixed left-0 top-0 h-full flex flex-col border-r border-outline-variant/30 bg-surface-container-low docked w-64 shadow-sm z-50">
+        <div class="p-6 flex items-center gap-3">
+            <img alt="Justy Partner Logo" class="w-12 h-12 object-contain" src="https://ogsalliance.com/images/justylogo.png"/>
+            <div>
+                <h1 class="text-headline-sm font-headline-md font-bold text-primary leading-tight">Justy</h1>
+                <p class="font-label-md text-[10px] uppercase tracking-widest text-on-surface-variant">Partner Portal</p>
+            </div>
+        </div>
+        <nav class="flex-1 mt-4 px-3 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all duration-200 active:scale-[0.98]" href="overview.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-label-md text-label-md">Overview</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all duration-200 active:scale-[0.98]" href="clients.html">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="font-label-md text-label-md">Clients</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-primary font-semibold border-r-4 border-primary bg-primary-container/10 transition-all duration-200 active:scale-[0.98]" href="commission.html">
+                <span class="material-symbols-outlined">payments</span>
+                <span class="font-label-md text-label-md">Commission</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all duration-200 active:scale-[0.98]" href="escalations.html">
+                <span class="material-symbols-outlined">priority_high</span>
+                <span class="font-label-md text-label-md">Escalations</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all duration-200 active:scale-[0.98]" href="onboarding.html">
+                <span class="material-symbols-outlined">add_business</span>
+                <span class="font-label-md text-label-md">Onboarding</span>
+            </a>
+        </nav>
+        <div class="px-3 pb-6 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-all" href="#">
+                <span class="material-symbols-outlined">help</span>
+                <span class="font-label-md text-label-md">Help Center</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 transition-all rounded" href="#">
+                <span class="material-symbols-outlined">logout</span>
+                <span class="font-label-md text-label-md">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- TopAppBar -->
+    <header class="sticky top-0 z-40 flex justify-between items-center px-6 py-4 ml-64 bg-surface border-b border-outline-variant/20 h-16">
+        <div class="flex items-center gap-4">
+            <h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Commission</h2>
+            <div class="h-6 w-px bg-outline-variant/40"></div>
+            <span class="font-label-md text-[12px] font-bold text-on-surface-variant">EARNINGS STATEMENTS</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-4">
+                <button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="absolute top-2 right-2 w-1.5 h-1.5 bg-error rounded-full"></span>
+                </button>
+                <div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+                    <span class="material-symbols-outlined">account_circle</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="ml-64 p-margin-desktop min-h-[calc(100vh-64px)]">
+        <div class="max-w-container-max mx-auto space-y-6">
+            <!-- Top Summary Card (Bento Style) -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+                <div class="bento-card tonal-shadow flex flex-col justify-between">
+                    <div>
+                        <span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest block mb-2">Gross Platform MRR</span>
+                        <div class="text-2xl font-bold text-primary">SGD 10,340</div>
+                    </div>
+                </div>
+                <div class="bento-card tonal-shadow flex flex-col justify-between">
+                    <div>
+                        <span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest block mb-2">Your 20% Share</span>
+                        <div class="text-2xl font-bold text-primary">SGD 2,068</div>
+                    </div>
+                </div>
+                <div class="bento-card tonal-shadow flex flex-col justify-between">
+                    <div>
+                        <span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest block mb-2">Year 1 Bonus (10%)</span>
+                        <div class="text-2xl font-bold text-primary text-secondary">SGD 1,034</div>
+                    </div>
+                </div>
+                <div class="bento-card tonal-shadow flex flex-col justify-between bg-primary-container text-on-primary">
+                    <div>
+                        <span class="font-label-md text-[10px] text-on-primary-container uppercase tracking-widest block mb-2">Total This Month</span>
+                        <div class="text-3xl font-bold">SGD 3,102</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Client Breakdown Table -->
+            <div class="bg-white rounded border border-outline-variant/20 tonal-shadow overflow-hidden">
+                <div class="p-6 border-b border-outline-variant/20">
+                    <h4 class="font-headline-sm text-headline-sm text-on-surface">Client Revenue Breakdown</h4>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-surface-container-low">
+                            <tr>
+                                <th class="px-6 py-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-widest">Business</th>
+                                <th class="px-6 py-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-widest">Tier</th>
+                                <th class="px-6 py-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-widest">Their MRR</th>
+                                <th class="px-6 py-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-widest">Your 20%</th>
+                                <th class="px-6 py-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-widest">Y1 Bonus (10%)</th>
+                                <th class="px-6 py-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-widest">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/10">
+                            <tr class="hover:bg-brand-cream/10 transition-colors">
+                                <td class="px-6 py-4 font-bold text-on-surface">Rumah Bali Spa</td>
+                                <td class="px-6 py-4">Standard</td>
+                                <td class="px-6 py-4">SGD 350</td>
+                                <td class="px-6 py-4">SGD 70.00</td>
+                                <td class="px-6 py-4">SGD 35.00</td>
+                                <td class="px-6 py-4 font-semibold text-primary">SGD 105.00</td>
+                            </tr>
+                            <tr class="hover:bg-brand-cream/10 transition-colors">
+                                <td class="px-6 py-4 font-bold text-on-surface">Ubud Yoga Studio</td>
+                                <td class="px-6 py-4">Starter</td>
+                                <td class="px-6 py-4">SGD 220</td>
+                                <td class="px-6 py-4">SGD 44.00</td>
+                                <td class="px-6 py-4">SGD 22.00</td>
+                                <td class="px-6 py-4 font-semibold text-primary">SGD 66.00</td>
+                            </tr>
+                            <tr class="hover:bg-brand-cream/10 transition-colors">
+                                <td class="px-6 py-4 font-bold text-on-surface">Seminyak Padel</td>
+                                <td class="px-6 py-4">Premium</td>
+                                <td class="px-6 py-4">SGD 480</td>
+                                <td class="px-6 py-4">SGD 96.00</td>
+                                <td class="px-6 py-4">SGD 48.00</td>
+                                <td class="px-6 py-4 font-semibold text-primary">SGD 144.00</td>
+                            </tr>
+                            <tr class="hover:bg-brand-cream/10 transition-colors">
+                                <td class="px-6 py-4 font-bold text-on-surface">Canggu Kitchen</td>
+                                <td class="px-6 py-4">Standard</td>
+                                <td class="px-6 py-4">SGD 350</td>
+                                <td class="px-6 py-4">SGD 70.00</td>
+                                <td class="px-6 py-4">SGD 35.00</td>
+                                <td class="px-6 py-4 font-semibold text-primary">SGD 105.00</td>
+                            </tr>
+                            <tr class="hover:bg-brand-cream/10 transition-colors opacity-60">
+                                <td class="px-6 py-4 font-bold text-on-surface">Uluwatu Surf Gym</td>
+                                <td class="px-6 py-4">Premium</td>
+                                <td class="px-6 py-4">SGD 480</td>
+                                <td class="px-6 py-4">SGD 0.00</td>
+                                <td class="px-6 py-4">SGD 0.00</td>
+                                <td class="px-6 py-4 font-semibold text-primary">SGD 0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Monthly History CSS Chart -->
+            <div class="bento-card tonal-shadow bg-white">
+                <h4 class="font-headline-sm text-headline-sm text-on-surface mb-6">Monthly Commission History</h4>
+                <div class="flex items-end justify-between h-64 px-4 border-b border-outline-variant/30 pb-4">
+                    <!-- Jan -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="bg-primary/20 hover:bg-primary/40 transition-colors w-12 rounded-t" style="height: 45%;" title="SGD 1,450"></div>
+                        <span class="text-xs text-on-surface-variant mt-2 font-semibold">Jan</span>
+                    </div>
+                    <!-- Feb -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="bg-primary/40 hover:bg-primary/60 transition-colors w-12 rounded-t" style="height: 55%;" title="SGD 1,780"></div>
+                        <span class="text-xs text-on-surface-variant mt-2 font-semibold">Feb</span>
+                    </div>
+                    <!-- Mar -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="bg-primary/60 hover:bg-primary/80 transition-colors w-12 rounded-t" style="height: 70%;" title="SGD 2,240"></div>
+                        <span class="text-xs text-on-surface-variant mt-2 font-semibold">Mar</span>
+                    </div>
+                    <!-- Apr -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="bg-primary/80 hover:bg-primary transition-colors w-12 rounded-t" style="height: 80%;" title="SGD 2,590"></div>
+                        <span class="text-xs text-on-surface-variant mt-2 font-semibold">Apr</span>
+                    </div>
+                    <!-- May -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="bg-primary w-12 rounded-t" style="height: 95%;" title="SGD 3,102"></div>
+                        <span class="text-xs text-on-surface-variant mt-2 font-semibold">May</span>
+                    </div>
+                    <!-- Jun -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="bg-brand-gold w-12 rounded-t" style="height: 100%;" title="SGD 3,250 (Projected)"></div>
+                        <span class="text-xs text-on-surface-variant mt-2 font-semibold">Jun (Proj)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
