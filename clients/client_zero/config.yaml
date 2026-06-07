@@ -3,7 +3,7 @@ persona_name: 'Sari'
 persona: 'warm, professional, light Bahasa informality'
 languages: ['id','en','ru','zh','fr']
 confidence_threshold: 0.75
-handoff_telegram_id: '8770162475'
+handoff_telegram_id: '540148294'
 working_hours: '09:00-21:00'
 timezone: 'Asia/Makassar'
 booking:

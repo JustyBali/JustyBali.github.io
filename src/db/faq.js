@@ -120,11 +120,37 @@ function getFaqs(clientId) {
  */
 function searchFaq(clientId, query) {
     const db = getDb(clientId);
-    const stmt = db.prepare('SELECT question, answer FROM faqs WHERE client_id = ? AND question LIKE ? LIMIT 5');
-    const rows = stmt.all(clientId, `%${query}%`);
+
+    // Split query into individual words (min 3 chars) so inflected words like
+    // "harganya" still match FAQ entries containing "harga".
+    const words = query
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(w => w.length >= 3);
+
+    if (words.length === 0) {
+        return '';
+    }
+
+    const stmt = db.prepare(
+        'SELECT id, question, answer FROM faqs WHERE client_id = ? AND (question LIKE ? OR answer LIKE ?) LIMIT 5'
+    );
+
+    // Collect unique rows across all word searches, keyed by id
+    const seen = new Map();
+    for (const word of words) {
+        const pattern = `%${word}%`;
+        const rows = stmt.all(clientId, pattern, pattern);
+        for (const row of rows) {
+            if (!seen.has(row.id)) {
+                seen.set(row.id, row);
+            }
+        }
+        if (seen.size >= 5) break;
+    }
 
     let result = '';
-    for (const row of rows) {
+    for (const row of seen.values()) {
         result += `Q: ${row.question}\nA: ${row.answer}\n`;
     }
     return result;

@@ -28,9 +28,9 @@ function detectLanguage(text) {
     }
     
     // 4. French (common words list)
-    const frWords = ['bonjour', 'merci', 'oui', 'non', 'je', 'vous', 'est', 'une', 'des', 'les', 'pour', 'avec', 'bien', 'votre'];
+    const frWords = ['bonjour', 'bonsoir', 'merci', 'oui', 'non', 'je', 'vous', 'est', 'une', 'des', 'les', 'pour', 'avec', 'bien', 'votre', 'combien', 'coute', 'comment', 'voulez', 'avez', 'bonne', 'nuit'];
     const frMatches = frWords.filter(w => words.includes(w)).length;
-    if (frMatches >= 2) {
+    if (frMatches >= 1) {
         return 'fr';
     }
     
