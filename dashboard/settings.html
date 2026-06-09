@@ -171,6 +171,22 @@
             box-shadow: 0 0 0 2px rgba(39, 76, 82, 0.1);
         }
 </style>
+
+<style id="responsive-layer">
+@media (max-width:1024px){
+  aside{transform:translateX(-100%);transition:transform 0.3s ease;}
+  aside.sidebar-open{transform:translateX(0);}
+  .main-content{margin-left:0!important;}
+  #mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:45;}
+  #mob-overlay.open{display:block;}
+  #hamburger{display:flex!important;}
+}
+@media (min-width:1025px){
+  aside{transform:none!important;}
+  #hamburger{display:none!important;}
+  #mob-overlay{display:none!important;}
+}
+</style>
 </head>
 <body class="bg-background text-on-surface font-body-md overflow-hidden h-screen flex">
 <!-- SideNavBar -->

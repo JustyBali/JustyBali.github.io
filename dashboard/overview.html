@@ -130,6 +130,22 @@
             box-shadow: 0px 12px 24px rgba(13, 53, 59, 0.08);
         }
     </style>
+
+<style id="responsive-layer">
+@media (max-width:1024px){
+  aside{transform:translateX(-100%);transition:transform 0.3s ease;}
+  aside.sidebar-open{transform:translateX(0);}
+  .main-content{margin-left:0!important;}
+  #mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:45;}
+  #mob-overlay.open{display:block;}
+  #hamburger{display:flex!important;}
+}
+@media (min-width:1025px){
+  aside{transform:none!important;}
+  #hamburger{display:none!important;}
+  #mob-overlay{display:none!important;}
+}
+</style>
 </head>
 <body class="font-body-md text-body-md overflow-x-hidden">
 <!-- SideNavBar -->
@@ -212,7 +228,7 @@
 </div>
 </header>
 <!-- Main Content -->
-<main class="ml-64 p-margin-desktop min-h-[calc(100vh-64px)]">
+<main class="main-content ml-64 p-margin-desktop min-h-[calc(100vh-64px)]">
 <div class="max-w-container-max mx-auto">
 <!-- Welcome Header -->
 <div class="mb-lg">
