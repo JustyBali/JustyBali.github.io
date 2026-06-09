@@ -1,388 +1,250 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Justy AI - FAQ Editor</title>
+<title>Justy FAQ Builder</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "tertiary": "#3c2e17",
-                        "secondary-fixed": "#f0e1c4",
-                        "surface-container-highest": "#e5e2e1",
-                        "on-background": "#1c1b1b",
-                        "primary": "#0d353b",
-                        "secondary-fixed-dim": "#d3c5a9",
-                        "on-error-container": "#93000a",
-                        "surface-variant": "#e5e2e1",
-                        "inverse-on-surface": "#f3f0ef",
-                        "secondary-container": "#eddec1",
-                        "tertiary-fixed": "#f7dfbe",
-                        "on-surface-variant": "#414849",
-                        "secondary": "#685d46",
-                        "on-secondary-container": "#6c614a",
-                        "surface-container-low": "#f6f3f2",
-                        "surface-container-lowest": "#ffffff",
-                        "background": "#fcf9f8",
-                        "tertiary-fixed-dim": "#dac3a3",
-                        "primary-fixed": "#c2e9f0",
-                        "on-secondary": "#ffffff",
-                        "surface": "#fcf9f8",
-                        "on-error": "#ffffff",
-                        "on-tertiary": "#ffffff",
-                        "primary-fixed-dim": "#a7cdd4",
-                        "error-container": "#ffdad6",
-                        "inverse-surface": "#313030",
-                        "tertiary-container": "#54442c",
-                        "error": "#ba1a1a",
-                        "on-primary-fixed-variant": "#274c52",
-                        "on-primary-container": "#96bbc2",
-                        "outline": "#71787a",
-                        "on-surface": "#1c1b1b",
-                        "surface-tint": "#40646a",
-                        "primary-container": "#274c52",
-                        "surface-dim": "#dcd9d9",
-                        "on-secondary-fixed-variant": "#4f4630",
-                        "surface-bright": "#fcf9f8",
-                        "on-tertiary-fixed": "#251905",
-                        "on-tertiary-fixed-variant": "#54442c",
-                        "inverse-primary": "#a7cdd4",
-                        "on-primary": "#ffffff",
-                        "surface-container-high": "#eae7e7",
-                        "on-primary-fixed": "#001f24",
-                        "on-tertiary-container": "#c8b293",
-                        "outline-variant": "#c1c8c9",
-                        "surface-container": "#f0eded"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "lg": "48px",
-                        "sm": "12px",
-                        "md": "24px",
-                        "base": "8px",
-                        "xs": "4px",
-                        "container-max": "1200px",
-                        "xl": "80px",
-                        "gutter": "24px"
-                    },
-                    "fontFamily": {
-                        "headline-md": ["Libre Caslon Text"],
-                        "headline-sm": ["Libre Caslon Text"],
-                        "label-md": ["Hanken Grotesk"],
-                        "display-lg-mobile": ["Libre Caslon Text"],
-                        "body-md": ["Hanken Grotesk"],
-                        "body-lg": ["Hanken Grotesk"],
-                        "display-lg": ["Libre Caslon Text"]
-                    },
-                    "fontSize": {
-                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
-                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
-                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "400"}],
-                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}]
-                    }
-                }
-            }
-        }
-    </script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#0d353b","on-primary": "#ffffff","primary-container": "#274c52","primary-fixed": "#c2e9f0","primary-fixed-dim": "#a7cdd4","on-primary-fixed": "#001f24","on-primary-fixed-variant": "#274c52","on-primary-container": "#96bbc2","secondary": "#685d46","on-secondary": "#ffffff","secondary-container": "#eddec1","secondary-fixed": "#f0e1c4","on-secondary-fixed": "#221b09","on-secondary-container": "#6c614a","tertiary": "#3c2e17","tertiary-container": "#54442c","on-tertiary": "#ffffff","on-tertiary-container": "#c8b293","background": "#fcf9f8","on-background": "#1c1b1b","surface": "#fcf9f8","on-surface": "#1c1b1b","surface-variant": "#e5e2e1","on-surface-variant": "#414849","surface-container-lowest": "#ffffff","surface-container-low": "#f6f3f2","surface-container": "#f0eded","surface-container-high": "#eae7e7","surface-container-highest": "#e5e2e1","surface-dim": "#dcd9d9","outline": "#71787a","outline-variant": "#c1c8c9","error": "#ba1a1a","on-error": "#ffffff","error-container": "#ffdad6","on-error-container": "#93000a","brand-gold": "#dcc5a5","brand-cream": "#e7d8bb"
+      },
+      borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+      fontFamily: { "headline-md": ["Libre Caslon Text"], "headline-sm": ["Libre Caslon Text"], "label-md": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"] },
+      fontSize: { "headline-md": ["32px",{"lineHeight":"1.3","fontWeight":"400"}], "headline-sm": ["24px",{"lineHeight":"1.4","fontWeight":"400"}], "label-md": ["14px",{"lineHeight":"1","letterSpacing":"0.05em","fontWeight":"600"}], "body-md": ["16px",{"lineHeight":"1.6","fontWeight":"400"}] }
+    }
+  }
+}
+</script>
 <style>
-        body {
-            background-color: #fcf9f8;
-            color: #1c1b1b;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .sidebar-active {
-            color: #0d353b;
-            font-weight: 600;
-            border-right: 3px solid #0d353b;
-            background-color: #f0e1c4;
-        }
-    </style>
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;display:inline-block;vertical-align:middle;}
+body{background-color:#fcf9f8;color:#1c1b1b;}
+.bento-card{background-color:#ffffff;border-radius:4px;padding:24px;border:1px solid rgba(193,200,201,0.3);}
+.bento-card:hover{box-shadow:0px 12px 24px rgba(13,53,59,0.08);}
+input,textarea,select{font-family:'Hanken Grotesk',sans-serif;}
+input:focus,textarea:focus{outline:none;border-color:#0d353b;box-shadow:0 0 0 3px rgba(13,53,59,0.1);}
+.service-card{background:#f6f3f2;border:1px solid rgba(193,200,201,0.4);border-radius:4px;padding:16px;margin-bottom:10px;}
+.output-box{background:#1a202c;border-radius:4px;padding:1.25rem;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#e2e8f0;white-space:pre-wrap;word-break:break-all;max-height:400px;overflow-y:auto;line-height:1.6;}
+</style>
 </head>
 <body class="font-body-md text-body-md overflow-x-hidden">
-<!-- SIDE NAV BAR -->
-<aside class="fixed left-0 top-0 h-full flex flex-col border-r border-outline-variant/30 bg-surface-container-low docked w-64 z-50 transition-all duration-300">
-<div class="px-6 py-8 flex flex-col gap-2">
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-[#e7d8bb] p-1 shadow-sm">
-<img alt="Justy AI Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXLJkeGk0szdD_zpqcOyj04fe0mH_Vk0goQxzYpaHY2V6gsNrynGGlMf4jsy1viHmS3SSFZ187Fm-umoi25MNx5hJwAdqwil7GLC7gGAgXTBzeEZLo2USaIoDYIq24P1m8P44NwqSs9eESJlb9PpvU_Ek9YCmixYJIDLRHcpSHKDDqfMPcTMUVaxQd718ZGsXDGxXhM0qrIm9ouzsvDiDI4dftwZdZNUYdcl5zx2etJllIPy9onT8Vix0HLsPz9KGGkyZpQX4SHLYe"/>
-</div>
-<div>
-<h1 class="text-headline-sm font-bold text-primary leading-tight">Justy</h1>
-<p class="text-[10px] uppercase tracking-widest text-on-surface-variant/70 font-semibold">Hospitality Bot</p>
-</div>
-</div>
-</div>
-<nav class="flex-1 px-4 space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-highest rounded-lg" href="#">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="font-label-md text-label-md">Overview</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-highest rounded-lg" href="#">
-<span class="material-symbols-outlined">chat_bubble</span>
-<span class="font-label-md text-label-md">Conversations</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 sidebar-active rounded-l-none rounded-r-lg" href="#">
-<span class="material-symbols-outlined">quiz</span>
-<span class="font-label-md text-label-md">FAQ Editor</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-highest rounded-lg" href="#">
-<span class="material-symbols-outlined">calendar_month</span>
-<span class="font-label-md text-label-md">Bookings</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-highest rounded-lg" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span class="font-label-md text-label-md">Settings</span>
-</a>
-</nav>
-<div class="p-4 bg-secondary-container/30 mx-4 mb-4 rounded-xl border border-secondary-container/50">
-<button class="w-full flex items-center justify-center gap-2 py-3 bg-on-primary-fixed-variant text-white rounded-lg font-label-md text-label-md hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-[20px]">support_agent</span>
-            Live Chat Support
-        </button>
-</div>
-<div class="px-4 pb-8 space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">help</span>
-<span class="font-label-md text-label-md">Help Center</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-error transition-colors" href="#">
-<span class="material-symbols-outlined">logout</span>
-<span class="font-label-md text-label-md">Logout</span>
-</a>
-</div>
-</aside>
-<!-- TOP APP BAR -->
-<header class="sticky top-0 z-40 flex justify-between items-center px-6 py-4 ml-64 bg-surface border-b border-outline-variant/20 h-16">
-<div class="flex items-center gap-6 flex-1">
-<h2 class="font-headline-sm font-semibold text-on-surface whitespace-nowrap">FAQ Editor</h2>
-<div class="relative max-w-md w-full">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-[20px]">search</span>
-<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary/20 text-body-sm transition-all" placeholder="Search knowledge base..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="bg-primary-container text-white px-6 py-2 rounded-full font-label-md text-label-md hover:opacity-90 transition-all">
-            New Appointment
-        </button>
-<div class="flex items-center gap-2">
-<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
-<span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
-</button>
-<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/30 cursor-pointer hover:opacity-80 transition-opacity">
-<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgxOUPTNnn61IqrxvJX_fJ6cHmP9zHVw1MJxDb5IVOz33uu-8dGRZN-d36OI5wUf4ABhgSOfrGrpuTMoUu4YSzvPBHtASNZs5VyXh4Ecq4AbvoISOY_OacPDCu9-CaMX8p0FHw_mg-7c_XBIdKgDZblOxgtzkhnGCWzQqdF-ByZUQZZPjGfGkEd__Apz40oW6iTYHTZebykMuDXQt900GDGRNhu9vexAUP9i7FrSHn6uJDV1UYiPJwz4dbMSg1paYMGP1RfDvgEQz0"/>
-</div>
-</div>
-</div>
-</header>
-<!-- MAIN CONTENT -->
-<main class="ml-64 p-8 min-h-[calc(100vh-64px)]">
-<div class="max-w-6xl mx-auto space-y-8">
-<!-- HEADER SECTION WITH BENTO HEADER -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="md:col-span-2 flex flex-col justify-center">
-<h3 class="font-display-lg text-primary">Knowledge Management</h3>
-<p class="text-on-surface-variant max-w-2xl mt-2 font-body-lg">Refine how Justy interacts with your guests. Every entry here powers the AI's ability to provide serene and accurate hospitality support.</p>
-</div>
-<div class="bg-primary-container text-white p-6 rounded-2xl flex flex-col justify-between shadow-sm border border-primary/20">
-<div class="flex justify-between items-start">
-<span class="material-symbols-outlined text-[32px] opacity-80">database</span>
-<div class="bg-white/10 border border-white/20 px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold">Active Repo</div>
-</div>
-<div>
-<div class="text-display-lg leading-tight">48</div>
-<div class="font-label-md opacity-80 uppercase tracking-wider">Total FAQ Entries</div>
-</div>
-</div>
-</div>
-<!-- ACTION BAR -->
-<div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-secondary-fixed/30 p-4 rounded-xl border border-secondary-fixed-dim/20">
-<div class="flex items-center gap-2">
-<button class="flex items-center gap-2 px-4 py-2 bg-surface-container text-on-surface-variant rounded-lg hover:bg-surface-container-high transition-colors font-label-md border border-outline-variant/20">
-<span class="material-symbols-outlined text-[18px]">filter_list</span>
-                    All Categories
-                </button>
-<button class="flex items-center gap-2 px-4 py-2 bg-surface-container text-on-surface-variant rounded-lg hover:bg-surface-container-high transition-colors font-label-md border border-outline-variant/20">
-<span class="material-symbols-outlined text-[18px]">sort</span>
-                    Last Modified
-                </button>
-</div>
-<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-on-primary-fixed-variant text-white rounded-lg font-label-md shadow-md hover:bg-primary transition-all" onclick="document.getElementById('addModal').classList.remove('hidden')">
-<span class="material-symbols-outlined">add_circle</span>
-                Add New FAQ
-            </button>
-</div>
-<!-- FAQ LIST -->
-<div class="space-y-4 pb-20">
-<!-- FAQ Entry 1 -->
-<div class="group bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/20 hover:border-primary/40 transition-all hover:shadow-[0px_8px_30px_rgba(13,53,59,0.04)] flex gap-6">
-<div class="flex-shrink-0 w-12 h-12 bg-secondary-fixed text-primary flex items-center justify-center rounded-xl font-headline-md border border-secondary-fixed-dim/50">
-<span class="material-symbols-outlined">question_mark</span>
-</div>
-<div class="flex-1 space-y-3">
-<div class="flex justify-between items-start gap-4">
-<h4 class="font-headline-sm text-[20px] text-on-surface font-semibold group-hover:text-primary transition-colors">What are the peak hours for Balinese massage bookings?</h4>
-<div class="flex gap-1">
-<button class="p-2 text-on-surface-variant hover:bg-primary/10 hover:text-primary rounded-lg transition-all" title="Edit Entry">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:bg-error/10 hover:text-error rounded-lg transition-all" title="Delete Entry">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</div>
-<p class="text-on-surface-variant font-body-md border-l-2 border-secondary-fixed-dim/50 pl-4 italic">
-                        Our peak hours are typically between 2:00 PM and 6:00 PM. We recommend guests book at least 48 hours in advance for these slots to ensure therapist availability.
-                    </p>
-<div class="flex items-center gap-4 pt-2">
-<span class="text-label-sm text-on-surface-variant/50 flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">calendar_today</span>
-                            Updated 2h ago
-                        </span>
-<span class="px-3 py-1 bg-secondary-container/50 text-on-secondary-fixed-variant text-label-sm rounded-full font-semibold">Scheduling</span>
-</div>
-</div>
-</div>
-<!-- FAQ Entry 2 -->
-<div class="group bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/20 hover:border-primary/40 transition-all hover:shadow-[0px_8px_30px_rgba(13,53,59,0.04)] flex gap-6">
-<div class="flex-shrink-0 w-12 h-12 bg-secondary-fixed text-primary flex items-center justify-center rounded-xl font-headline-md border border-secondary-fixed-dim/50">
-<span class="material-symbols-outlined">question_mark</span>
-</div>
-<div class="flex-1 space-y-3">
-<div class="flex justify-between items-start gap-4">
-<h4 class="font-headline-sm text-[20px] text-on-surface font-semibold group-hover:text-primary transition-colors">Do you offer couple's spa packages during the weekend?</h4>
-<div class="flex gap-1">
-<button class="p-2 text-on-surface-variant hover:bg-primary/10 hover:text-primary rounded-lg transition-all">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:bg-error/10 hover:text-error rounded-lg transition-all">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</div>
-<p class="text-on-surface-variant font-body-md border-l-2 border-secondary-fixed-dim/50 pl-4 italic">
-                        Yes, we offer the "Ubud Harmony" couple's package daily. It includes a 90-minute massage and a traditional petal bath. Weekend slots fill up quickly!
-                    </p>
-<div class="flex items-center gap-4 pt-2">
-<span class="text-label-sm text-on-surface-variant/50 flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">calendar_today</span>
-                            Updated yesterday
-                        </span>
-<span class="px-3 py-1 bg-secondary-container/50 text-on-secondary-fixed-variant text-label-sm rounded-full font-semibold">Packages</span>
-</div>
-</div>
-</div>
-<!-- FAQ Entry 3 -->
-<div class="group bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/20 hover:border-primary/40 transition-all hover:shadow-[0px_8px_30px_rgba(13,53,59,0.04)] flex gap-6">
-<div class="flex-shrink-0 w-12 h-12 bg-secondary-fixed text-primary flex items-center justify-center rounded-xl font-headline-md border border-secondary-fixed-dim/50">
-<span class="material-symbols-outlined">question_mark</span>
-</div>
-<div class="flex-1 space-y-3">
-<div class="flex justify-between items-start gap-4">
-<h4 class="font-headline-sm text-[20px] text-on-surface font-semibold group-hover:text-primary transition-colors">Is there a cancellation fee for booked appointments?</h4>
-<div class="flex gap-1">
-<button class="p-2 text-on-surface-variant hover:bg-primary/10 hover:text-primary rounded-lg transition-all">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:bg-error/10 hover:text-error rounded-lg transition-all">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</div>
-<p class="text-on-surface-variant font-body-md border-l-2 border-secondary-fixed-dim/50 pl-4 italic">
-                        Cancellations made within 24 hours of the appointment will incur a 50% charge. No-shows are charged at full price. We appreciate your understanding.
-                    </p>
-<div class="flex items-center gap-4 pt-2">
-<span class="text-label-sm text-on-surface-variant/50 flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">calendar_today</span>
-                            Updated 3 days ago
-                        </span>
-<span class="px-3 py-1 bg-secondary-container/50 text-on-secondary-fixed-variant text-label-sm rounded-full font-semibold">Policy</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- MODAL - ADD FAQ -->
-<div class="fixed inset-0 z-[60] hidden" id="addModal">
-<div class="absolute inset-0 bg-inverse-surface/60 backdrop-blur-sm" onclick="this.parentElement.classList.add('hidden')"></div>
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl bg-surface-container-lowest p-8 rounded-2xl shadow-2xl border border-outline-variant/30 animate-in fade-in zoom-in duration-300">
-<div class="flex justify-between items-center mb-6">
-<h2 class="font-headline-sm text-primary">Add FAQ Entry</h2>
-<button class="p-2 hover:bg-surface-container rounded-full transition-colors" onclick="document.getElementById('addModal').classList.add('hidden')">
-<span class="material-symbols-outlined">close</span>
-</button>
-</div>
-<form class="space-y-6">
-<div class="space-y-2">
-<label class="block font-label-md text-label-md text-on-surface-variant">Question Text</label>
-<textarea class="w-full bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 focus:ring-2 focus:ring-primary/20 text-body-md outline-none" placeholder="e.g. What is your refund policy for unused vouchers?" rows="2"></textarea>
-</div>
-<div class="space-y-2">
-<label class="block font-label-md text-label-md text-on-surface-variant">AI Response</label>
-<textarea class="w-full bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 focus:ring-2 focus:ring-primary/20 text-body-md outline-none" placeholder="Describe the answer exactly as Justy should deliver it to the guest..." rows="4"></textarea>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-2">
-<label class="block font-label-md text-label-md text-on-surface-variant">Category</label>
-<select class="w-full bg-surface-container-low border border-outline-variant/20 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 text-body-sm outline-none">
-<option>Scheduling</option>
-<option>Pricing</option>
-<option>Services</option>
-<option>Safety &amp; Hygiene</option>
-</select>
-</div>
-<div class="space-y-2">
-<label class="block font-label-md text-label-md text-on-surface-variant">Priority Tag</label>
-<div class="flex gap-2 pt-1">
-<button class="flex-1 py-2 border border-outline-variant rounded-lg text-label-sm hover:border-primary transition-colors" type="button">Normal</button>
-<button class="flex-1 py-2 border border-primary bg-primary/10 rounded-lg text-label-sm text-primary font-bold" type="button">High</button>
-</div>
-</div>
-</div>
-<div class="flex justify-end gap-4 pt-4">
-<button class="px-6 py-3 text-on-surface-variant font-label-md hover:bg-surface-container rounded-lg transition-colors" onclick="document.getElementById('addModal').classList.add('hidden')" type="button">Cancel</button>
-<button class="px-8 py-3 bg-on-primary-fixed-variant text-white font-label-md rounded-lg shadow-lg hover:bg-primary transition-all" type="button">Publish Entry</button>
-</div>
-</form>
-</div>
-</div>
-<!-- BACKGROUND ATMOSPHERE -->
-<div class="fixed top-0 right-0 -z-10 w-[500px] h-[500px] bg-primary/3 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
-<div class="fixed bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-secondary-fixed/5 blur-[100px] rounded-full -translate-x-1/4 translate-y-1/4"></div>
-<script>
-    // Simple search feedback interaction
-    const searchInput = document.querySelector('input[type="text"]');
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value;
-        console.log('Searching for:', query);
-    });
 
-    // Add visual feedback to list items on click
-    document.querySelectorAll('.group').forEach(card => {
-        card.addEventListener('mousedown', () => {
-            card.style.transform = 'scale(0.995)';
-        });
-        card.addEventListener('mouseup', () => {
-            card.style.transform = 'scale(1)';
-        });
+<aside class="fixed left-0 top-0 h-full flex flex-col border-r border-outline-variant/30 bg-surface-container-low w-64 shadow-sm z-50">
+  <div class="p-6 flex items-center gap-3">
+    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl">J</div>
+    <div>
+      <h1 class="text-headline-sm font-headline-md font-bold text-primary leading-tight">Justy</h1>
+      <p class="font-label-md text-[10px] uppercase tracking-widest text-on-surface-variant">AI Hospitality</p>
+    </div>
+  </div>
+  <nav class="flex-1 mt-4 px-3 space-y-1">
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all" href="overview.html"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-label-md text-label-md">Overview</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all" href="chat.html"><span class="material-symbols-outlined text-[20px]">chat_bubble</span><span class="font-label-md text-label-md">Conversations</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-primary font-semibold border-r-4 border-primary bg-primary-container/10" href="#"><span class="material-symbols-outlined text-[20px]">quiz</span><span class="font-label-md text-label-md">FAQ Builder</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all" href="booking.html"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span class="font-label-md text-label-md">Bookings</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all" href="settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-md text-label-md">Settings</span></a>
+  </nav>
+  <div class="p-4 bg-brand-cream/30 m-4 rounded-lg border border-brand-gold/20">
+    <button class="w-full py-2.5 bg-primary-container text-on-primary font-label-md text-label-md rounded hover:opacity-90 transition-opacity">Live Chat Support</button>
+  </div>
+  <div class="px-3 pb-6 space-y-1">
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-all" href="#"><span class="material-symbols-outlined text-[20px]">help</span><span class="font-label-md text-label-md">Help Center</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 transition-all rounded" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-label-md text-label-md">Logout</span></a>
+  </div>
+</aside>
+
+<main class="ml-64 min-h-screen p-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="mb-8">
+      <h2 class="text-headline-sm font-headline-md text-primary mb-1">FAQ Builder</h2>
+      <p class="text-on-surface-variant text-sm">Fill in your spa details to compile structured training data for the AI receptionist.</p>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Business Details</p>
+      <div class="space-y-4">
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Spa Name</label><input id="spa_name" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. LOM Spa Uluwatu"></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Location / Area</label><input id="location" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Uluwatu, Bali"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">WhatsApp Number</label><input id="whatsapp" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. +62 851-9063-6010"></div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-on-surface-variant mb-1.5">Google Maps Link</label>
+          <input id="maps_link" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="https://maps.app.goo.gl/...">
+          <p class="text-xs text-on-surface-variant mt-1">Auto-sent when customers ask for directions.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Opening Time</label><input id="open_time" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. 10:00"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Closing Time</label><input id="close_time" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. 22:00"></div>
+        </div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Days Open</label><input id="days" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Every day, or Monday-Saturday"></div>
+      </div>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2 pb-3 border-b border-outline-variant/30">Treatments & Pricing</p>
+      <p class="text-xs text-on-surface-variant mb-4 mt-2">For each treatment: short tagline, full description, duration, and price.</p>
+      <div id="services_list"></div>
+      <button onclick="addService()" class="w-full mt-3 py-2.5 border border-dashed border-primary text-primary text-sm font-semibold rounded hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">add</span> Add Treatment
+      </button>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Booking & Payment</p>
+      <div class="space-y-4">
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">How to Book</label><input id="booking_method" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. WhatsApp only, walk-ins welcome"></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Deposit Required?</label><input id="deposit" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. No deposit, or 30%"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">How Far in Advance?</label><input id="advance" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Same day OK, up to 3 days"></div>
+        </div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Cancellation Policy</label><input id="cancellation" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Free cancel 24hrs before"></div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Payment Methods</label><input id="payment" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Cash, QRIS, credit card"></div>
+      </div>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Facilities & Experience</p>
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Parking</label><input id="parking" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Bike parking, no car"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Towels / Robes?</label><input id="facilities" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Bring your own towel"></div>
+        </div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Choose Your Therapist?</label><input id="therapist" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Yes, 6 therapists available"></div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">What Makes You Special?</label><textarea id="unique" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" rows="3" placeholder="e.g. Open-air bale, ocean view, traditional techniques..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Safety & Disclaimers</p>
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Age Restrictions</label><input id="age" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. No restrictions"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Medical / Health Notes</label><input id="health" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Disclose conditions"></div>
+        </div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Anything Else Customers Ask?</label><textarea id="other" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" rows="3" placeholder="Add any common questions not covered above..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="flex gap-3 pt-2 pb-4">
+      <button onclick="clearForm()" class="flex-1 py-3 border border-outline-variant text-on-surface-variant text-sm font-semibold rounded hover:bg-surface-container transition-colors">Reset</button>
+      <button onclick="generateOutput()" class="flex-[2] py-3 bg-primary text-on-primary text-sm font-semibold rounded hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">auto_awesome</span> Compile FAQ Data
+      </button>
+    </div>
+
+    <div id="output_container" class="hidden mb-8">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-3">Compiled Training Manifest</p>
+      <div id="output_box" class="output-box"></div>
+      <div class="flex justify-end mt-3">
+        <button id="copy_btn" onclick="copyOutput()" class="px-5 py-2.5 bg-primary text-on-primary text-sm font-semibold rounded hover:opacity-90 transition-opacity">Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+let serviceCount=0;
+function addService(){
+  serviceCount++;
+  const list=document.getElementById('services_list');
+  const card=document.createElement('div');
+  card.className='service-card';
+  card.innerHTML=`<div class="flex items-center justify-between mb-3"><span class="font-label-md text-[11px] text-primary uppercase tracking-widest">Treatment ${serviceCount}</span><button onclick="removeCard(this)" class="text-on-surface-variant hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[18px]">close</span></button></div><div class="space-y-3"><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Treatment Name</label><input class="svc-name w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" placeholder="e.g. Traditional Balinese Massage"></div><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Short Tagline <span class="font-normal opacity-60">(1 sentence)</span></label><input class="svc-tagline w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" placeholder="e.g. Deep relaxation using ancient Balinese techniques"></div><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Full Description</label><textarea class="svc-desc w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" rows="3" placeholder="e.g. Combines gentle stretches, long flowing strokes, acupressure and aromatherapy. Hands used: palms, thumbs, forearms."></textarea></div><div class="grid grid-cols-2 gap-3"><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Duration</label><input class="svc-duration w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" placeholder="e.g. 60 minutes"></div><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Price (IDR)</label><input class="svc-price w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" placeholder="e.g. 850,000"></div></div></div>`;
+  list.appendChild(card);
+}
+function removeCard(btn){
+  const cards=document.querySelectorAll('.service-card');
+  if(cards.length>1) btn.closest('.service-card').remove();
+  else alert('At least one treatment is required.');
+}
+function clearForm(){
+  if(confirm('Reset all form data?')){
+    document.querySelectorAll('input,textarea').forEach(el=>el.value='');
+    document.getElementById('services_list').innerHTML='';
+    serviceCount=0;
+    document.getElementById('output_container').classList.add('hidden');
+  }
+}
+function v(id){return document.getElementById(id).value.trim();}
+function generateOutput(){
+  const spaName=v('spa_name')||'Spa';
+  const services=[];
+  document.querySelectorAll('.service-card').forEach(card=>{
+    const name=card.querySelector('.svc-name').value.trim();
+    const tagline=card.querySelector('.svc-tagline').value.trim();
+    const desc=card.querySelector('.svc-desc').value.trim();
+    const duration=card.querySelector('.svc-duration').value.trim();
+    const price=card.querySelector('.svc-price').value.trim();
+    if(name) services.push({name,tagline,desc,duration,price});
+  });
+  const faqs=[];
+  if(v('spa_name')) faqs.push({q:'What is the name of the spa?',a:spaName});
+  if(v('location')&&v('maps_link')){
+    faqs.push({q:'Where are you located?',a:`We are located at ${v('location')}. Get directions here: ${v('maps_link')}`});
+    faqs.push({q:'Dimana lokasinya?',a:`Kami berlokasi di ${v('location')}. Petunjuk arah: ${v('maps_link')}`});
+  } else if(v('location')){
+    faqs.push({q:'Where are you located?',a:`We are located in ${v('location')}.`});
+    faqs.push({q:'Dimana lokasinya?',a:`Kami berlokasi di ${v('location')}.`});
+  }
+  if(v('maps_link')){
+    faqs.push({q:'How do I get there / directions?',a:`Here is our location on Google Maps: ${v('maps_link')}`});
+    faqs.push({q:'Bagaimana cara ke sana?',a:`Ini link Google Maps kami: ${v('maps_link')}`});
+  }
+  if(v('open_time')&&v('close_time')){
+    const days=v('days')||'every day';
+    faqs.push({q:'What are your opening hours?',a:`We are open ${days} from ${v('open_time')} to ${v('close_time')} WITA.`});
+    faqs.push({q:'Jam berapa buka?',a:`Kami buka ${days} pukul ${v('open_time')} sampai ${v('close_time')} WITA.`});
+  }
+  if(services.length>0){
+    const summaryList=services.map(s=>{let e=s.name;if(s.duration)e+=` (${s.duration})`;if(s.price)e+=` - IDR ${s.price}`;return e;}).join(', ');
+    faqs.push({q:'What treatments do you offer?',a:`We offer: ${summaryList}.`});
+    faqs.push({q:'Apa saja layanan yang tersedia?',a:`Kami menyediakan: ${summaryList}.`});
+    services.forEach(s=>{
+      let ans='';
+      if(s.tagline) ans+=s.tagline+' ';
+      if(s.desc) ans+=s.desc+' ';
+      if(s.duration) ans+=`Duration: ${s.duration}. `;
+      if(s.price) ans+=`Price: IDR ${s.price}.`;
+      faqs.push({q:`Tell me about ${s.name}`,a:ans.trim()||s.name});
+      if(s.price) faqs.push({q:`How much is ${s.name}?`,a:`${s.name} is IDR ${s.price}${s.duration?`, ${s.duration}`:''}.${s.tagline?' '+s.tagline:''}`});
     });
+  }
+  if(v('booking_method')) faqs.push({q:'How do I book?',a:v('booking_method')});
+  if(v('deposit')) faqs.push({q:'Is a deposit required?',a:v('deposit')});
+  if(v('advance')) faqs.push({q:'How far in advance should I book?',a:v('advance')});
+  if(v('cancellation')) faqs.push({q:'What is the cancellation policy?',a:v('cancellation')});
+  if(v('payment')) faqs.push({q:'What payment methods do you accept?',a:v('payment')});
+  if(v('parking')) faqs.push({q:'Is parking available?',a:v('parking')});
+  if(v('facilities')) faqs.push({q:'Are towels and robes provided?',a:v('facilities')});
+  if(v('therapist')) faqs.push({q:'Can I choose my therapist?',a:v('therapist')});
+  if(v('unique')) faqs.push({q:'What makes your spa special?',a:v('unique')});
+  if(v('age')) faqs.push({q:'Are there age restrictions?',a:v('age')});
+  if(v('health')) faqs.push({q:'Any health notes before booking?',a:v('health')});
+  if(v('other')) faqs.push({q:'Other info',a:v('other')});
+  if(faqs.length===0){alert('Please fill in at least a few fields first.');return;}
+  let out=`==================================================\nMANIFEST IDENTIFIER: SPA: ${spaName.toUpperCase()}\nCOMPILE TIMESTAMP:   ${new Date().toLocaleString()}\nPAYLOAD COUNT:       ${faqs.length} FAQ Rules Loaded\n==================================================\n\n`;
+  faqs.forEach((f,i)=>{out+=`RULE_${i+1}_Q: ${f.q}\nRULE_${i+1}_A: ${f.a}\n\n`;});
+  document.getElementById('output_box').textContent=out;
+  const container=document.getElementById('output_container');
+  container.classList.remove('hidden');
+  container.scrollIntoView({behavior:'smooth',block:'nearest'});
+  window._faqOutput=out;
+}
+function copyOutput(){
+  navigator.clipboard.writeText(window._faqOutput||'').then(()=>{
+    const btn=document.getElementById('copy_btn');
+    btn.textContent='Copied!';
+    setTimeout(()=>btn.textContent='Copy to Clipboard',2500);
+  });
+}
+addService();addService();addService();
 </script>
-</body></html>
+</body>
+</html>
