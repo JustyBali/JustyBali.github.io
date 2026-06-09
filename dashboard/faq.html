@@ -49,7 +49,7 @@ input:focus,textarea:focus{outline:none;border-color:#0d353b;box-shadow:0 0 0 3p
 }
 </style>
 </head>
-<body class="font-body-md text-body-md overflow-x-hidden">
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen">
 
 <aside class="fixed left-0 top-0 h-full flex flex-col border-r border-outline-variant/30 bg-surface-container-low w-64 shadow-sm z-50">
   <div class="px-6 py-8">
@@ -79,12 +79,35 @@ input:focus,textarea:focus{outline:none;border-color:#0d353b;box-shadow:0 0 0 3p
   </div>
 </aside>
 
-<main class="main-content ml-64 min-h-screen p-8">
-  <div class="max-w-4xl">
-    <div class="mb-8">
-      <h2 class="text-headline-sm font-headline-md text-primary mb-1">FAQ Builder</h2>
-      <p class="text-on-surface-variant text-sm">Fill in your spa details to compile structured training data for the AI receptionist.</p>
+<main class="main-content ml-64 flex flex-col h-screen overflow-hidden">
+<header class="sticky top-0 z-40 flex justify-between items-center px-6 py-4 bg-surface border-b border-outline-variant/20 h-16">
+  <div class="flex items-center gap-4">
+    <div class="relative w-80">
+      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+      <input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="Search FAQs..." type="text"/>
     </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <button class="bg-primary-container text-on-primary px-6 py-2 rounded-full font-label-md shadow-sm transition-opacity active:opacity-80">
+      + New FAQ Entry
+    </button>
+    <div class="flex items-center gap-3">
+      <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-bold text-sm">J</div>
+    </div>
+  </div>
+</header>
+
+<div class="flex-1 overflow-y-auto p-lg bg-background">
+<div class="max-w-7xl mx-auto space-y-md">
+  <div class="flex justify-between items-end mb-6">
+    <div>
+      <h2 class="text-display-lg font-headline-md text-primary-container">FAQ Builder</h2>
+      <p class="text-body-lg text-on-surface-variant mt-2 italic">Compile structured training data for your AI receptionist.</p>
+    </div>
+  </div>
 
     <div class="bento-card mb-6">
       <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Business Details</p>
@@ -164,9 +187,10 @@ input:focus,textarea:focus{outline:none;border-color:#0d353b;box-shadow:0 0 0 3p
       <div id="output_box" class="output-box"></div>
       <div class="flex justify-end mt-3">
         <button id="copy_btn" onclick="copyOutput()" class="px-5 py-2.5 bg-primary text-on-primary text-sm font-semibold rounded hover:opacity-90 transition-opacity">Copy to Clipboard</button>
-      </div>
     </div>
   </div>
+</div>
+</div>
 </main>
 
 <script>
