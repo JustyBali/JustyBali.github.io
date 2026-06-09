@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Justy FAQ Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#0d353b","on-primary": "#ffffff","primary-container": "#274c52","primary-fixed": "#c2e9f0","primary-fixed-dim": "#a7cdd4","on-primary-fixed": "#001f24","on-primary-fixed-variant": "#274c52","on-primary-container": "#96bbc2","secondary": "#685d46","on-secondary": "#ffffff","secondary-container": "#eddec1","secondary-fixed": "#f0e1c4","on-secondary-fixed": "#221b09","on-secondary-container": "#6c614a","tertiary": "#3c2e17","tertiary-container": "#54442c","on-tertiary": "#ffffff","on-tertiary-container": "#c8b293","background": "#fcf9f8","on-background": "#1c1b1b","surface": "#fcf9f8","on-surface": "#1c1b1b","surface-variant": "#e5e2e1","on-surface-variant": "#414849","surface-container-lowest": "#ffffff","surface-container-low": "#f6f3f2","surface-container": "#f0eded","surface-container-high": "#eae7e7","surface-container-highest": "#e5e2e1","surface-dim": "#dcd9d9","outline": "#71787a","outline-variant": "#c1c8c9","error": "#ba1a1a","on-error": "#ffffff","error-container": "#ffdad6","on-error-container": "#93000a","brand-gold": "#dcc5a5","brand-cream": "#e7d8bb"
+      },
+      borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+      fontFamily: { "headline-md": ["Libre Caslon Text"], "headline-sm": ["Libre Caslon Text"], "label-md": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"] },
+      fontSize: { "headline-md": ["32px",{"lineHeight":"1.3","fontWeight":"400"}], "headline-sm": ["24px",{"lineHeight":"1.4","fontWeight":"400"}], "label-md": ["14px",{"lineHeight":"1","letterSpacing":"0.05em","fontWeight":"600"}], "body-md": ["16px",{"lineHeight":"1.6","fontWeight":"400"}] }
+    }
+  }
+}
+</script>
+<style>
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;display:inline-block;vertical-align:middle;}
+body{background-color:#fcf9f8;color:#1c1b1b;}
+.bento-card{background-color:#ffffff;border-radius:4px;padding:24px;border:1px solid rgba(193,200,201,0.3);}
+.bento-card:hover{box-shadow:0px 12px 24px rgba(13,53,59,0.08);}
+input,textarea,select{font-family:'Hanken Grotesk',sans-serif;}
+input:focus,textarea:focus{outline:none;border-color:#0d353b;box-shadow:0 0 0 3px rgba(13,53,59,0.1);}
+.service-card{background:#f6f3f2;border:1px solid rgba(193,200,201,0.4);border-radius:4px;padding:16px;margin-bottom:10px;}
+.output-box{background:#1a202c;border-radius:4px;padding:1.25rem;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#e2e8f0;white-space:pre-wrap;word-break:break-all;max-height:400px;overflow-y:auto;line-height:1.6;}
+</style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+
+<aside class="fixed left-0 top-0 h-full flex flex-col border-r border-outline-variant/30 bg-surface-container-low w-64 shadow-sm z-50">
+  <div class="p-6 flex items-center gap-3">
+    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl">J</div>
+    <div>
+      <h1 class="text-headline-sm font-headline-md font-bold text-primary leading-tight">Justy</h1>
+      <p class="font-label-md text-[10px] uppercase tracking-widest text-on-surface-variant">AI Hospitality</p>
+    </div>
+  </div>
+  <nav class="flex-1 mt-4 px-3 space-y-1">
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all" href="overview.html"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-label-md text-label-md">Overview</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all" href="chat.html"><span class="material-symbols-outlined text-[20px]">chat_bubble</span><span class="font-label-md text-label-md">Conversations</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-primary font-semibold border-r-4 border-primary bg-primary-container/10" href="#"><span class="material-symbols-outlined text-[20px]">quiz</span><span class="font-label-md text-label-md">FAQ Builder</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all" href="booking.html"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span class="font-label-md text-label-md">Bookings</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all" href="settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-md text-label-md">Settings</span></a>
+  </nav>
+  <div class="p-4 bg-brand-cream/30 m-4 rounded-lg border border-brand-gold/20">
+    <button class="w-full py-2.5 bg-primary-container text-on-primary font-label-md text-label-md rounded hover:opacity-90 transition-opacity">Live Chat Support</button>
+  </div>
+  <div class="px-3 pb-6 space-y-1">
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-all" href="#"><span class="material-symbols-outlined text-[20px]">help</span><span class="font-label-md text-label-md">Help Center</span></a>
+    <a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 transition-all rounded" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-label-md text-label-md">Logout</span></a>
+  </div>
+</aside>
+
+<main class="ml-64 min-h-screen p-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="mb-8">
+      <h2 class="text-headline-sm font-headline-md text-primary mb-1">FAQ Builder</h2>
+      <p class="text-on-surface-variant text-sm">Fill in your spa details to compile structured training data for the AI receptionist.</p>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Business Details</p>
+      <div class="space-y-4">
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Spa Name</label><input id="spa_name" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. LOM Spa Uluwatu"></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Location / Area</label><input id="location" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Uluwatu, Bali"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">WhatsApp Number</label><input id="whatsapp" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. +62 851-9063-6010"></div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-on-surface-variant mb-1.5">Google Maps Link</label>
+          <input id="maps_link" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="https://maps.app.goo.gl/...">
+          <p class="text-xs text-on-surface-variant mt-1">Auto-sent when customers ask for directions.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Opening Time</label><input id="open_time" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. 10:00"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Closing Time</label><input id="close_time" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. 22:00"></div>
+        </div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Days Open</label><input id="days" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Every day, or Monday-Saturday"></div>
+      </div>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2 pb-3 border-b border-outline-variant/30">Treatments & Pricing</p>
+      <p class="text-xs text-on-surface-variant mb-4 mt-2">For each treatment: short tagline, full description, duration, and price.</p>
+      <div id="services_list"></div>
+      <button onclick="addService()" class="w-full mt-3 py-2.5 border border-dashed border-primary text-primary text-sm font-semibold rounded hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">add</span> Add Treatment
+      </button>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Booking & Payment</p>
+      <div class="space-y-4">
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">How to Book</label><input id="booking_method" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. WhatsApp only, walk-ins welcome"></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Deposit Required?</label><input id="deposit" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. No deposit, or 30%"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">How Far in Advance?</label><input id="advance" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Same day OK, up to 3 days"></div>
+        </div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Cancellation Policy</label><input id="cancellation" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Free cancel 24hrs before"></div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Payment Methods</label><input id="payment" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Cash, QRIS, credit card"></div>
+      </div>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Facilities & Experience</p>
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Parking</label><input id="parking" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Bike parking, no car"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Towels / Robes?</label><input id="facilities" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Bring your own towel"></div>
+        </div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Choose Your Therapist?</label><input id="therapist" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Yes, 6 therapists available"></div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">What Makes You Special?</label><textarea id="unique" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" rows="3" placeholder="e.g. Open-air bale, ocean view, traditional techniques..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="bento-card mb-6">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Safety & Disclaimers</p>
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Age Restrictions</label><input id="age" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. No restrictions"></div>
+          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Medical / Health Notes</label><input id="health" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Disclose conditions"></div>
+        </div>
+        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Anything Else Customers Ask?</label><textarea id="other" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" rows="3" placeholder="Add any common questions not covered above..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="flex gap-3 pt-2 pb-4">
+      <button onclick="clearForm()" class="flex-1 py-3 border border-outline-variant text-on-surface-variant text-sm font-semibold rounded hover:bg-surface-container transition-colors">Reset</button>
+      <button onclick="generateOutput()" class="flex-[2] py-3 bg-primary text-on-primary text-sm font-semibold rounded hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">auto_awesome</span> Compile FAQ Data
+      </button>
+    </div>
+
+    <div id="output_container" class="hidden mb-8">
+      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-3">Compiled Training Manifest</p>
+      <div id="output_box" class="output-box"></div>
+      <div class="flex justify-end mt-3">
+        <button id="copy_btn" onclick="copyOutput()" class="px-5 py-2.5 bg-primary text-on-primary text-sm font-semibold rounded hover:opacity-90 transition-opacity">Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+let serviceCount=0;
+function addService(){
+  serviceCount++;
+  const list=document.getElementById('services_list');
+  const card=document.createElement('div');
+  card.className='service-card';
+  card.innerHTML=`<div class="flex items-center justify-between mb-3"><span class="font-label-md text-[11px] text-primary uppercase tracking-widest">Treatment ${serviceCount}</span><button onclick="removeCard(this)" class="text-on-surface-variant hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[18px]">close</span></button></div><div class="space-y-3"><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Treatment Name</label><input class="svc-name w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" placeholder="e.g. Traditional Balinese Massage"></div><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Short Tagline <span class="font-normal opacity-60">(1 sentence)</span></label><input class="svc-tagline w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" placeholder="e.g. Deep relaxation using ancient Balinese techniques"></div><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Full Description</label><textarea class="svc-desc w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" rows="3" placeholder="e.g. Combines gentle stretches, long flowing strokes, acupressure and aromatherapy. Hands used: palms, thumbs, forearms."></textarea></div><div class="grid grid-cols-2 gap-3"><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Duration</label><input class="svc-duration w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" placeholder="e.g. 60 minutes"></div><div><label class="block text-xs font-medium text-on-surface-variant mb-1">Price (IDR)</label><input class="svc-price w-full border border-outline-variant rounded px-3 py-2 text-sm bg-surface-container-lowest" placeholder="e.g. 850,000"></div></div></div>`;
+  list.appendChild(card);
+}
+function removeCard(btn){
+  const cards=document.querySelectorAll('.service-card');
+  if(cards.length>1) btn.closest('.service-card').remove();
+  else alert('At least one treatment is required.');
+}
+function clearForm(){
+  if(confirm('Reset all form data?')){
+    document.querySelectorAll('input,textarea').forEach(el=>el.value='');
+    document.getElementById('services_list').innerHTML='';
+    serviceCount=0;
+    document.getElementById('output_container').classList.add('hidden');
+  }
+}
+function v(id){return document.getElementById(id).value.trim();}
+function generateOutput(){
+  const spaName=v('spa_name')||'Spa';
+  const services=[];
+  document.querySelectorAll('.service-card').forEach(card=>{
+    const name=card.querySelector('.svc-name').value.trim();
+    const tagline=card.querySelector('.svc-tagline').value.trim();
+    const desc=card.querySelector('.svc-desc').value.trim();
+    const duration=card.querySelector('.svc-duration').value.trim();
+    const price=card.querySelector('.svc-price').value.trim();
+    if(name) services.push({name,tagline,desc,duration,price});
+  });
+  const faqs=[];
+  if(v('spa_name')) faqs.push({q:'What is the name of the spa?',a:spaName});
+  if(v('location')&&v('maps_link')){
+    faqs.push({q:'Where are you located?',a:`We are located at ${v('location')}. Get directions here: ${v('maps_link')}`});
+    faqs.push({q:'Dimana lokasinya?',a:`Kami berlokasi di ${v('location')}. Petunjuk arah: ${v('maps_link')}`});
+  } else if(v('location')){
+    faqs.push({q:'Where are you located?',a:`We are located in ${v('location')}.`});
+    faqs.push({q:'Dimana lokasinya?',a:`Kami berlokasi di ${v('location')}.`});
+  }
+  if(v('maps_link')){
+    faqs.push({q:'How do I get there / directions?',a:`Here is our location on Google Maps: ${v('maps_link')}`});
+    faqs.push({q:'Bagaimana cara ke sana?',a:`Ini link Google Maps kami: ${v('maps_link')}`});
+  }
+  if(v('open_time')&&v('close_time')){
+    const days=v('days')||'every day';
+    faqs.push({q:'What are your opening hours?',a:`We are open ${days} from ${v('open_time')} to ${v('close_time')} WITA.`});
+    faqs.push({q:'Jam berapa buka?',a:`Kami buka ${days} pukul ${v('open_time')} sampai ${v('close_time')} WITA.`});
+  }
+  if(services.length>0){
+    const summaryList=services.map(s=>{let e=s.name;if(s.duration)e+=` (${s.duration})`;if(s.price)e+=` - IDR ${s.price}`;return e;}).join(', ');
+    faqs.push({q:'What treatments do you offer?',a:`We offer: ${summaryList}.`});
+    faqs.push({q:'Apa saja layanan yang tersedia?',a:`Kami menyediakan: ${summaryList}.`});
+    services.forEach(s=>{
+      let ans='';
+      if(s.tagline) ans+=s.tagline+' ';
+      if(s.desc) ans+=s.desc+' ';
+      if(s.duration) ans+=`Duration: ${s.duration}. `;
+      if(s.price) ans+=`Price: IDR ${s.price}.`;
+      faqs.push({q:`Tell me about ${s.name}`,a:ans.trim()||s.name});
+      if(s.price) faqs.push({q:`How much is ${s.name}?`,a:`${s.name} is IDR ${s.price}${s.duration?`, ${s.duration}`:''}.${s.tagline?' '+s.tagline:''}`});
+    });
+  }
+  if(v('booking_method')) faqs.push({q:'How do I book?',a:v('booking_method')});
+  if(v('deposit')) faqs.push({q:'Is a deposit required?',a:v('deposit')});
+  if(v('advance')) faqs.push({q:'How far in advance should I book?',a:v('advance')});
+  if(v('cancellation')) faqs.push({q:'What is the cancellation policy?',a:v('cancellation')});
+  if(v('payment')) faqs.push({q:'What payment methods do you accept?',a:v('payment')});
+  if(v('parking')) faqs.push({q:'Is parking available?',a:v('parking')});
+  if(v('facilities')) faqs.push({q:'Are towels and robes provided?',a:v('facilities')});
+  if(v('therapist')) faqs.push({q:'Can I choose my therapist?',a:v('therapist')});
+  if(v('unique')) faqs.push({q:'What makes your spa special?',a:v('unique')});
+  if(v('age')) faqs.push({q:'Are there age restrictions?',a:v('age')});
+  if(v('health')) faqs.push({q:'Any health notes before booking?',a:v('health')});
+  if(v('other')) faqs.push({q:'Other info',a:v('other')});
+  if(faqs.length===0){alert('Please fill in at least a few fields first.');return;}
+  let out=`==================================================\nMANIFEST IDENTIFIER: SPA: ${spaName.toUpperCase()}\nCOMPILE TIMESTAMP:   ${new Date().toLocaleString()}\nPAYLOAD COUNT:       ${faqs.length} FAQ Rules Loaded\n==================================================\n\n`;
+  faqs.forEach((f,i)=>{out+=`RULE_${i+1}_Q: ${f.q}\nRULE_${i+1}_A: ${f.a}\n\n`;});
+  document.getElementById('output_box').textContent=out;
+  const container=document.getElementById('output_container');
+  container.classList.remove('hidden');
+  container.scrollIntoView({behavior:'smooth',block:'nearest'});
+  window._faqOutput=out;
+}
+function copyOutput(){
+  navigator.clipboard.writeText(window._faqOutput||'').then(()=>{
+    const btn=document.getElementById('copy_btn');
+    btn.textContent='Copied!';
+    setTimeout(()=>btn.textContent='Copy to Clipboard',2500);
+  });
+}
+addService();addService();addService();
+</script>
+</body>
+</html>
