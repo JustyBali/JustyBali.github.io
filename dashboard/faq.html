@@ -110,84 +110,94 @@ input:focus,textarea:focus{outline:none;border-color:#0d353b;box-shadow:0 0 0 3p
     </div>
   </div>
 
-    <div class="bento-card mb-6">
-      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Business Details</p>
-      <div class="space-y-4">
-        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Spa Name</label><input id="spa_name" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. LOM Spa Uluwatu"></div>
-        <div class="grid grid-cols-2 gap-4">
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Location / Area</label><input id="location" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Uluwatu, Bali"></div>
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">WhatsApp Number</label><input id="whatsapp" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. +62 851-9063-6010"></div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+      <!-- Left Column: Business Details & Treatments & Output -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="bento-card">
+          <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Business Details</p>
+          <div class="space-y-4">
+            <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Spa Name</label><input id="spa_name" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. LOM Spa Uluwatu"></div>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Location / Area</label><input id="location" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Uluwatu, Bali"></div>
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">WhatsApp Number</label><input id="whatsapp" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. +62 851-9063-6010"></div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-on-surface-variant mb-1.5">Google Maps Link</label>
+              <input id="maps_link" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="https://maps.app.goo.gl/...">
+              <p class="text-xs text-on-surface-variant mt-1">Auto-sent when customers ask for directions.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Opening Time</label><input id="open_time" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. 10:00"></div>
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Closing Time</label><input id="close_time" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. 22:00"></div>
+            </div>
+            <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Days Open</label><input id="days" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Every day, or Monday-Saturday"></div>
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-medium text-on-surface-variant mb-1.5">Google Maps Link</label>
-          <input id="maps_link" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="https://maps.app.goo.gl/...">
-          <p class="text-xs text-on-surface-variant mt-1">Auto-sent when customers ask for directions.</p>
+
+        <div class="bento-card">
+          <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2 pb-3 border-b border-outline-variant/30">Treatments & Pricing</p>
+          <p class="text-xs text-on-surface-variant mb-4 mt-2">For each treatment: short tagline, full description, duration, and price.</p>
+          <div id="services_list"></div>
+          <button onclick="addService()" class="w-full mt-3 py-2.5 border border-dashed border-primary text-primary text-sm font-semibold rounded hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">add</span> Add Treatment
+          </button>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Opening Time</label><input id="open_time" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. 10:00"></div>
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Closing Time</label><input id="close_time" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. 22:00"></div>
+
+        <div class="flex gap-3 pt-2 pb-4">
+          <button onclick="clearForm()" class="flex-1 py-3 border border-outline-variant text-on-surface-variant text-sm font-semibold rounded hover:bg-surface-container transition-colors">Reset</button>
+          <button onclick="generateOutput()" class="flex-[2] py-3 bg-primary text-on-primary text-sm font-semibold rounded hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">auto_awesome</span> Compile FAQ Data
+          </button>
         </div>
-        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Days Open</label><input id="days" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Every day, or Monday-Saturday"></div>
+
+        <div id="output_container" class="hidden mb-8">
+          <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-3">Compiled Training Manifest</p>
+          <div id="output_box" class="output-box"></div>
+          <div class="flex justify-end mt-3">
+            <button id="copy_btn" onclick="copyOutput()" class="px-5 py-2.5 bg-primary text-on-primary text-sm font-semibold rounded hover:opacity-90 transition-opacity">Copy to Clipboard</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Booking, Facilities, Safety -->
+      <div class="lg:col-span-1 space-y-6">
+        <div class="bento-card">
+          <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Booking & Payment</p>
+          <div class="space-y-4">
+            <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">How to Book</label><input id="booking_method" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. WhatsApp only, walk-ins welcome"></div>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Deposit Required?</label><input id="deposit" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. No deposit, or 30%"></div>
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">How Far in Advance?</label><input id="advance" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Same day OK, up to 3 days"></div>
+            </div>
+            <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Cancellation Policy</label><input id="cancellation" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Free cancel 24hrs before"></div>
+            <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Payment Methods</label><input id="payment" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Cash, QRIS, credit card"></div>
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Facilities & Experience</p>
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Parking</label><input id="parking" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Bike parking, no car"></div>
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Towels / Robes?</label><input id="facilities" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Bring your own towel"></div>
+            </div>
+            <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Choose Your Therapist?</label><input id="therapist" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Yes, 6 therapists available"></div>
+            <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">What Makes You Special?</label><textarea id="unique" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" rows="3" placeholder="e.g. Open-air bale, ocean view, traditional techniques..."></textarea></div>
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Safety & Disclaimers</p>
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Age Restrictions</label><input id="age" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. No restrictions"></div>
+              <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Medical / Health Notes</label><input id="health" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Disclose conditions"></div>
+            </div>
+            <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Anything Else Customers Ask?</label><textarea id="other" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" rows="3" placeholder="Add any common questions not covered above..."></textarea></div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="bento-card mb-6">
-      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2 pb-3 border-b border-outline-variant/30">Treatments & Pricing</p>
-      <p class="text-xs text-on-surface-variant mb-4 mt-2">For each treatment: short tagline, full description, duration, and price.</p>
-      <div id="services_list"></div>
-      <button onclick="addService()" class="w-full mt-3 py-2.5 border border-dashed border-primary text-primary text-sm font-semibold rounded hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
-        <span class="material-symbols-outlined text-[18px]">add</span> Add Treatment
-      </button>
-    </div>
-
-    <div class="bento-card mb-6">
-      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Booking & Payment</p>
-      <div class="space-y-4">
-        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">How to Book</label><input id="booking_method" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. WhatsApp only, walk-ins welcome"></div>
-        <div class="grid grid-cols-2 gap-4">
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Deposit Required?</label><input id="deposit" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. No deposit, or 30%"></div>
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">How Far in Advance?</label><input id="advance" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Same day OK, up to 3 days"></div>
-        </div>
-        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Cancellation Policy</label><input id="cancellation" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Free cancel 24hrs before"></div>
-        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Payment Methods</label><input id="payment" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Cash, QRIS, credit card"></div>
-      </div>
-    </div>
-
-    <div class="bento-card mb-6">
-      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Facilities & Experience</p>
-      <div class="space-y-4">
-        <div class="grid grid-cols-2 gap-4">
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Parking</label><input id="parking" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Bike parking, no car"></div>
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Towels / Robes?</label><input id="facilities" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Bring your own towel"></div>
-        </div>
-        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Choose Your Therapist?</label><input id="therapist" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Yes, 6 therapists available"></div>
-        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">What Makes You Special?</label><textarea id="unique" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" rows="3" placeholder="e.g. Open-air bale, ocean view, traditional techniques..."></textarea></div>
-      </div>
-    </div>
-
-    <div class="bento-card mb-6">
-      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-5 pb-3 border-b border-outline-variant/30">Safety & Disclaimers</p>
-      <div class="space-y-4">
-        <div class="grid grid-cols-2 gap-4">
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Age Restrictions</label><input id="age" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. No restrictions"></div>
-          <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Medical / Health Notes</label><input id="health" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" placeholder="e.g. Disclose conditions"></div>
-        </div>
-        <div><label class="block text-sm font-medium text-on-surface-variant mb-1.5">Anything Else Customers Ask?</label><textarea id="other" class="w-full border border-outline-variant rounded px-3 py-2.5 text-sm bg-surface-container-lowest" rows="3" placeholder="Add any common questions not covered above..."></textarea></div>
-      </div>
-    </div>
-
-    <div class="flex gap-3 pt-2 pb-4">
-      <button onclick="clearForm()" class="flex-1 py-3 border border-outline-variant text-on-surface-variant text-sm font-semibold rounded hover:bg-surface-container transition-colors">Reset</button>
-      <button onclick="generateOutput()" class="flex-[2] py-3 bg-primary text-on-primary text-sm font-semibold rounded hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-        <span class="material-symbols-outlined text-[18px]">auto_awesome</span> Compile FAQ Data
-      </button>
-    </div>
-
-    <div id="output_container" class="hidden mb-8">
-      <p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-3">Compiled Training Manifest</p>
-      <div id="output_box" class="output-box"></div>
-      <div class="flex justify-end mt-3">
-        <button id="copy_btn" onclick="copyOutput()" class="px-5 py-2.5 bg-primary text-on-primary text-sm font-semibold rounded hover:opacity-90 transition-opacity">Copy to Clipboard</button>
     </div>
   </div>
 </div>
