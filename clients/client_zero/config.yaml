@@ -1,10 +1,10 @@
-business_name: 'Rumah Bali Spa'
+business_name: 'LOM Spa Uluwatu'
 persona_name: 'Sari'
 persona: 'warm, professional, light Bahasa informality'
 languages: ['id','en','ru','zh','fr']
 confidence_threshold: 0.75
 handoff_telegram_id: '540148294'
-working_hours: '09:00-21:00'
+working_hours: '10:00-22:00'
 timezone: 'Asia/Makassar'
 booking:
   services: ['60min massage','90min scrub','couples package']
