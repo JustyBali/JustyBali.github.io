@@ -1,403 +1,553 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Justy — Your WhatsApp, answering every guest</title>
-<meta name="description" content="Justy answers your business WhatsApp like a trained receptionist. Any language, any hour. You stay in control.">
-<meta property="og:title" content="Justy — Your WhatsApp, answering every guest">
-<meta property="og:description" content="Watch it reply live. Any language, any hour. You stay in control.">
-<meta property="og:image" content="https://justybali.github.io/justylogo.png">
-<meta property="og:url" content="https://justybali.github.io/demo.html">
-<meta property="og:type" content="website">
-<link rel="icon" type="image/png" href="justylogo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<meta name="description" content="Justy answers your business WhatsApp like a trained receptionist. Any language, any hour. You stay in control."/>
+<meta property="og:title" content="Justy — Your WhatsApp, answering every guest"/>
+<meta property="og:description" content="Watch it reply live. Any language, any hour. You stay in control."/>
+<meta property="og:image" content="https://github.com/JustyBali/JustyBali.github.io/blob/main/justylogo.png?raw=true"/>
+<meta property="og:url" content="https://justybali.github.io/demo.html"/>
+<meta property="og:type" content="website"/>
+<link rel="icon" type="image/png" href="https://github.com/JustyBali/JustyBali.github.io/blob/main/justylogo.png?raw=true"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Hanken+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "on-primary-container": "#799ea5",
+        "secondary-container": "#fe9572",
+        "outline": "#71787a",
+        "inverse-on-surface": "#f3f0ef",
+        "surface-container-low": "#f6f3f2",
+        "surface-bright": "#fcf9f8",
+        "surface-container": "#f0eded",
+        "on-secondary": "#ffffff",
+        "on-background": "#1c1b1b",
+        "tertiary": "#00201e",
+        "on-tertiary": "#ffffff",
+        "surface-container-lowest": "#ffffff",
+        "secondary-fixed": "#ffdbd0",
+        "outline-variant": "#c1c8c9",
+        "tertiary-container": "#003734",
+        "secondary": "#99462a",
+        "background": "#fcf9f8",
+        "primary-fixed": "#c3e9f1",
+        "surface-container-highest": "#e5e2e1",
+        "primary-container": "#0d353b",
+        "inverse-surface": "#313030",
+        "on-secondary-container": "#762c12",
+        "surface-variant": "#e5e2e1",
+        "on-primary": "#ffffff",
+        "surface-tint": "#40646a",
+        "surface-dim": "#dcd9d9",
+        "error": "#ba1a1a",
+        "inverse-primary": "#a7cdd4",
+        "surface": "#fcf9f8",
+        "on-secondary-fixed": "#390b00",
+        "primary": "#001f24",
+        "on-surface-variant": "#414849",
+        "on-surface": "#1c1b1b",
+        "on-primary-fixed": "#001f24",
+        "surface-container-high": "#eae7e7",
+        "on-secondary-fixed-variant": "#7a2f15",
+        "primary-fixed-dim": "#a7cdd4"
+      },
+      borderRadius: {
+        DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem",
+        "2xl": "1.5rem", "3xl": "2rem", full: "9999px"
+      },
+      spacing: {
+        xl: "80px", md: "24px", lg: "48px",
+        "container-max": "1200px", base: "8px", xs: "4px", sm: "12px", gutter: "24px"
+      },
+      fontFamily: {
+        "display-lg": ["Libre Caslon Text"],
+        "body-lg": ["Hanken Grotesk"],
+        "caption": ["Hanken Grotesk"],
+        "label-md": ["Hanken Grotesk"],
+        "headline-sm": ["Libre Caslon Text"],
+        "headline-md": ["Libre Caslon Text"],
+        "display-lg-mobile": ["Libre Caslon Text"],
+        "body-md": ["Hanken Grotesk"]
+      },
+      fontSize: {
+        "display-lg": ["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"700"}],
+        "body-lg": ["18px",{"lineHeight":"28px","fontWeight":"400"}],
+        "caption": ["12px",{"lineHeight":"16px","fontWeight":"400"}],
+        "label-md": ["14px",{"lineHeight":"20px","letterSpacing":"0.05em","fontWeight":"600"}],
+        "headline-sm": ["24px",{"lineHeight":"32px","fontWeight":"600"}],
+        "headline-md": ["32px",{"lineHeight":"40px","fontWeight":"600"}],
+        "display-lg-mobile": ["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],
+        "body-md": ["16px",{"lineHeight":"24px","fontWeight":"400"}]
+      }
+    }
+  }
+}
+</script>
 <style>
-:root{
-  --ink:#0d353b;
-  --teal:#1E4D4A;
-  --beige:#D9CCBA;
-  --parchment:#F9F7F3;
-  --grey:#505658;
-  --wa-bg:#e5ddd5;
-  --wa-bubble-in:#ffffff;
-  --wa-bubble-out:#dcf8c6;
-  --wa-green:#25D366;
-  --radius:14px;
+body { font-family:'Hanken Grotesk',sans-serif; background-color:#fcf9f8; color:#1c1b1b; }
+.material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+.songket-pattern {
+  background-image: radial-gradient(circle at 2px 2px, rgba(13,53,59,0.03) 1px, transparent 0);
+  background-size: 24px 24px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Hanken Grotesk',sans-serif;
-  background:var(--parchment);
-  color:var(--ink);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-h1,h2,h3{font-family:'Libre Caslon Text',serif;font-weight:700;line-height:1.2}
-.container{max-width:960px;margin:0 auto;padding:0 20px}
+.fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.whatsapp-bubble-in { animation: bubbleIn 0.3s cubic-bezier(0.175,0.885,0.32,1.275) forwards; }
+@keyframes bubbleIn { from{opacity:0;transform:scale(0.8) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }
+.typing-dot { animation: typingAnim 1.4s infinite; }
+@keyframes typingAnim { 0%,100%{opacity:0.2} 50%{opacity:1} }
 
-/* ── Header ── */
-header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(249,247,243,.92);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid rgba(13,53,59,.08);
+/* ── Coverflow ── */
+.coverflow-section { overflow: hidden; }
+.coverflow-outer {
+  perspective: 1400px;
+  overflow: visible;
+  padding: 40px 0 20px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
 }
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:960px;margin:0 auto}
-.brand-lockup{display:flex;align-items:center;gap:10px}
-.logo-img{height:40px;width:auto;display:block}
-.footer-logo{height:52px;width:auto;display:block;margin:0 auto 12px;opacity:.9}
-.wordmark{font-family:'Libre Caslon Text',serif;font-size:1.35rem;letter-spacing:.14em;font-weight:700;color:var(--ink)}
-.wordmark span{color:var(--teal);opacity:.55;font-size:.6rem;display:block;letter-spacing:.28em;font-family:'Hanken Grotesk',sans-serif;font-weight:600;margin-top:-2px}
-.lang-toggle{display:flex;gap:2px;background:rgba(13,53,59,.07);border-radius:99px;padding:3px}
-.lang-toggle button{
-  border:none;background:transparent;font-family:inherit;font-weight:600;font-size:.8rem;
-  padding:5px 14px;border-radius:99px;cursor:pointer;color:var(--grey);transition:all .2s;
+.coverflow-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: clamp(340px, 46vw, 420px);
+  transform-style: preserve-3d;
 }
-.lang-toggle button.active{background:var(--ink);color:var(--parchment)}
-.lang-toggle button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-
-/* ── Songket divider ── */
-.songket{
-  height:6px;
-  background:repeating-linear-gradient(90deg,var(--beige) 0 14px,transparent 14px 18px,var(--teal) 18px 22px,transparent 22px 26px);
-  opacity:.5;
+.cf-slide {
+  position: absolute;
+  width: min(340px, 78vw);
+  transition: transform 0.52s cubic-bezier(0.23,1,0.32,1), opacity 0.52s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
-
-/* ── Hero ── */
-.hero{padding:48px 0 24px;text-align:center}
-.hero h1{font-size:clamp(1.7rem,5.5vw,2.7rem);max-width:640px;margin:0 auto 14px}
-.hero h1 em{font-style:italic;color:var(--teal)}
-.hero p.sub{color:var(--grey);max-width:480px;margin:0 auto;font-size:1.05rem}
-.eyebrow{
-  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--teal);background:rgba(30,77,74,.08);padding:6px 16px;border-radius:99px;margin-bottom:18px;
+.cf-card {
+  border-radius: 1.5rem;
+  padding: 32px 26px;
+  box-shadow: 0 24px 56px -14px rgba(0,0,0,.28);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
-
-/* ── Demo chips ── */
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:30px 0 22px}
-.chip{
-  border:1.5px solid rgba(13,53,59,.18);background:#fff;color:var(--ink);
-  font-family:inherit;font-weight:600;font-size:.86rem;padding:9px 18px;border-radius:99px;
-  cursor:pointer;transition:all .2s;
+.cf-card.dark { background: #335f5e; color: #f1e8e0; border: 1px solid rgba(241,232,224,.08); }
+.cf-card.light { background: #f1e8e0; color: #335f5e; border: 1px solid rgba(51,95,94,.1); }
+.cf-tag {
+  display: inline-block; font-size: .62rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
 }
-.chip:hover{border-color:var(--teal)}
-.chip.active{background:var(--ink);color:var(--parchment);border-color:var(--ink)}
-.chip:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-.chip .flag{margin-right:6px}
-
-/* ── Phone mockup ── */
-.phone-wrap{display:flex;justify-content:center;padding-bottom:10px}
-.phone{
-  width:min(370px,92vw);
-  background:#111;
-  border-radius:38px;
-  padding:10px;
-  box-shadow:0 30px 60px -18px rgba(13,53,59,.35),0 0 0 1px rgba(0,0,0,.4);
+.cf-card.dark .cf-tag  { background: rgba(241,232,224,.14); color: #f1e8e0; }
+.cf-card.light .cf-tag { background: rgba(51,95,94,.12);    color: #335f5e; }
+.cf-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; line-height: 1; }
+.cf-card h3 { font-family:'Libre Caslon Text',serif; font-size: 1.1rem; line-height: 1.3; margin-bottom: 10px; color: inherit; }
+.cf-card p  { font-size: .88rem; line-height: 1.6; opacity: .84; }
+.cf-dots { display: flex; gap: 7px; justify-content: center; margin-top: 20px; }
+.cf-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(13,53,59,.18); border: none; padding: 0; cursor: pointer;
+  transition: all .25s;
 }
-.screen{
-  background:var(--wa-bg);
-  background-image:radial-gradient(rgba(13,53,59,.04) 1px,transparent 1px);
-  background-size:18px 18px;
-  border-radius:28px;
-  overflow:hidden;
-  display:flex;flex-direction:column;
-  height:clamp(620px,80vh,740px);
+.cf-dot.active { width: 22px; border-radius: 999px; background: #0d353b; }
+.cf-arrows { display: flex; justify-content: center; gap: 12px; margin-top: 14px; }
+.cf-arr {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1.5px solid rgba(13,53,59,.2); background: transparent;
+  cursor: pointer; font-size: 1.1rem; color: #001f24;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
 }
-.wa-header{
-  background:var(--ink);color:#fff;display:flex;align-items:center;gap:10px;padding:12px 14px;flex-shrink:0;
+.cf-arr:hover { background: #0d353b; color: #fff; border-color: #0d353b; }
+.cf-arr:disabled { opacity: .25; cursor: default; }
+.cf-progress {
+  width: min(400px, 80%); margin: 12px auto 0;
+  height: 3px; background: rgba(13,53,59,.1); border-radius: 999px; overflow: hidden;
 }
-.wa-avatar{
-  width:36px;height:36px;border-radius:50%;
-  background:var(--beige);color:var(--ink);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Libre Caslon Text',serif;font-weight:700;font-size:1.05rem;flex-shrink:0;
-}
-.wa-title{font-weight:600;font-size:.95rem;line-height:1.2}
-.wa-status{font-size:.72rem;opacity:.75}
-.wa-body{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:8px}
-.bubble{
-  max-width:80%;padding:8px 12px;border-radius:10px;font-size:.88rem;line-height:1.45;
-  position:relative;box-shadow:0 1px 1px rgba(0,0,0,.08);
-  animation:pop .25s ease;
-  white-space:pre-line;
-}
-@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.bubble.in{background:var(--wa-bubble-in);align-self:flex-start;border-top-left-radius:2px}
-.bubble.out{background:var(--wa-bubble-out);align-self:flex-end;border-top-right-radius:2px}
-.bubble .time{display:block;font-size:.64rem;color:rgba(0,0,0,.4);text-align:right;margin-top:3px}
-.bubble .xlate{display:block;font-size:.7rem;font-style:italic;color:rgba(0,0,0,.45);margin-top:5px;border-top:1px dashed rgba(0,0,0,.12);padding-top:4px}
-.typing{
-  background:var(--wa-bubble-out);align-self:flex-end;border-radius:10px;border-top-right-radius:2px;
-  padding:11px 14px;display:flex;gap:4px;box-shadow:0 1px 1px rgba(0,0,0,.08);
-}
-.typing i{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.35);animation:blink 1.2s infinite}
-.typing i:nth-child(2){animation-delay:.2s}
-.typing i:nth-child(3){animation-delay:.4s}
-@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
-.replay{
-  margin:14px auto 0;display:block;
-  border:none;background:var(--teal);color:#fff;font-family:inherit;font-weight:600;
-  font-size:.85rem;padding:10px 22px;border-radius:99px;cursor:pointer;transition:background .2s;
-}
-.replay:hover{background:var(--ink)}
-.replay:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-
-/* ── Telegram alert card ── */
-.tg-alert{
-  position:absolute;left:50%;transform:translateX(-50%) translateY(20px);bottom:18px;
-  width:min(330px,86%);
-  background:#fff;border-radius:12px;padding:12px 14px;
-  box-shadow:0 16px 40px -10px rgba(0,0,0,.35);
-  border-left:4px solid #2AABEE;
-  opacity:0;transition:all .45s cubic-bezier(.2,.9,.3,1.2);
-  pointer-events:none;font-size:.8rem;z-index:5;
-}
-.tg-alert.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.tg-alert .tg-head{display:flex;align-items:center;gap:8px;font-weight:700;margin-bottom:4px;color:#2AABEE;font-size:.78rem}
-.tg-alert .tg-dot{width:8px;height:8px;border-radius:50%;background:#2AABEE;flex-shrink:0}
-.tg-alert .tg-btns{display:flex;gap:6px;margin-top:8px}
-.tg-alert .tg-btns span{flex:1;text-align:center;font-size:.68rem;font-weight:600;border:1px solid rgba(42,171,238,.4);color:#2AABEE;border-radius:6px;padding:5px 2px}
-.screen-outer{position:relative}
-
-/* ── Facts strip ── */
-.facts{padding:54px 0 10px}
-.facts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
-.fact{
-  background:#fff;border:1px solid rgba(13,53,59,.08);border-radius:var(--radius);
-  padding:24px 22px;
-}
-.fact h3{font-size:1.05rem;margin-bottom:8px;color:var(--teal)}
-.fact p{font-size:.92rem;color:var(--grey)}
-.section-head{text-align:center;max-width:560px;margin:0 auto}
-.section-head h2{font-size:clamp(1.4rem,4vw,1.9rem);margin-bottom:10px}
-.section-head p{color:var(--grey)}
-
-/* ── Steps ── */
-.steps{padding:54px 0}
-.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
-.step{
-  background:var(--ink);color:var(--parchment);border-radius:var(--radius);padding:26px 22px;
-}
-.step .k{
-  font-family:'Libre Caslon Text',serif;font-size:1.9rem;color:var(--beige);display:block;margin-bottom:8px;
-}
-.step h3{font-size:1.02rem;margin-bottom:8px;color:#fff}
-.step p{font-size:.9rem;opacity:.82}
-
-/* ── Control section ── */
-.control{padding:54px 0}
-.control-card{
-  background:linear-gradient(135deg,#fff 0%,#fdfbf7 100%);
-  border:1px solid rgba(13,53,59,.1);border-radius:18px;
-  padding:34px 26px;margin-top:28px;text-align:center;
-}
-.control-card p{max-width:520px;margin:10px auto 0;color:var(--grey);font-size:.95rem}
-
-/* ── CTA ── */
-.cta{padding:60px 0 80px;text-align:center}
-.cta h2{font-size:clamp(1.5rem,4.5vw,2.1rem);max-width:560px;margin:0 auto 14px}
-.cta p{color:var(--grey);margin-bottom:26px}
-.wa-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--wa-green);color:#fff;text-decoration:none;
-  font-weight:700;font-size:1.02rem;padding:15px 32px;border-radius:99px;
-  box-shadow:0 12px 28px -8px rgba(37,211,102,.5);transition:transform .15s;
-}
-.wa-btn:hover{transform:translateY(-2px)}
-.wa-btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
-.wa-btn svg{width:22px;height:22px;flex-shrink:0}
-.cta .note{font-size:.8rem;color:var(--grey);margin-top:16px;opacity:.8}
-
-footer{
-  border-top:1px solid rgba(13,53,59,.08);padding:26px 0;text-align:center;
-  font-size:.78rem;color:var(--grey);
-}
-
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-}
-@media (max-width:480px){
-  .screen{height:clamp(560px,74vh,680px)}
-  .hero{padding-top:36px}
+.cf-progress-bar {
+  height: 100%; background: #0d353b; border-radius: 999px;
+  transition: width .52s cubic-bezier(0.23,1,0.32,1);
 }
 </style>
 </head>
-<body>
+<body class="selection:bg-primary-container/20 overflow-x-hidden">
 
-<header>
-  <div class="header-inner">
-    <div class="brand-lockup">
-      <img src="https://github.com/JustyBali/JustyBali.github.io/blob/main/justylogo.png?raw=true" alt="Justy logo" class="logo-img">
-      <div class="wordmark">JUSTY<span data-i18n="tagline">Balinese Hospitality Bot</span></div>
+<!-- ── Header ── -->
+<header class="bg-surface/80 backdrop-blur-md sticky top-0 shadow-sm z-50">
+  <nav class="flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto">
+    <div class="flex items-center gap-2">
+      <img alt="Justy Logo" class="h-9 w-auto" src="https://github.com/JustyBali/JustyBali.github.io/blob/main/justylogo.png?raw=true"/>
     </div>
-    <div class="lang-toggle" role="group" aria-label="Page language">
-      <button id="btn-en" class="active" onclick="setPageLang('en')">EN</button>
-      <button id="btn-id" onclick="setPageLang('id')">ID</button>
+    <div class="hidden md:flex gap-md items-center">
+      <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#problems">Why Justy</a>
+      <a class="text-primary border-b-2 border-secondary font-bold pb-1 font-label-md text-label-md" href="#demo">Live Demo</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#features">Features</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#process">How it works</a>
     </div>
-  </div>
+    <div class="flex items-center gap-sm">
+      <button class="text-on-surface-variant hover:text-secondary font-label-md text-label-md transition-all" id="langToggle">EN / ID</button>
+      <a href="https://wa.me/REPLACE_WITH_JUSTIN_NUMBER?text=Hi%20Justin%2C%20saw%20the%20Justy%20demo%20%E2%80%94%20interested" target="_blank" rel="noopener"
+         class="bg-primary-container text-on-primary px-6 py-2 rounded-xl font-label-md text-label-md hover:opacity-90 transition-opacity" data-i18n="navCta">Get Started</a>
+    </div>
+  </nav>
 </header>
 
-<section class="hero container">
-  <span class="eyebrow" data-i18n="eyebrow">Live demo — watch it reply</span>
-  <h1 data-i18n="h1">Your WhatsApp now answers <em>every guest</em>. Any language. Any hour.</h1>
-  <p class="sub" data-i18n="h1sub">Same number your guests already know. A trained receptionist behind it, replying in seconds — even at 11pm.</p>
+<main class="songket-pattern">
 
-  <div class="chips" id="scenario-chips" role="group" aria-label="Demo scenario">
-    <button class="chip active" data-scn="spa"><span class="flag">🇫🇷</span><span data-i18n="chipSpa">Spa — French guest</span></button>
-    <button class="chip" data-scn="gym"><span class="flag">🇬🇧</span><span data-i18n="chipGym">Gym — trial class</span></button>
-    <button class="chip" data-scn="resto"><span class="flag">🇨🇳</span><span data-i18n="chipResto">Restaurant — reservation</span></button>
-    <button class="chip" data-scn="tough"><span class="flag">🇮🇩</span><span data-i18n="chipTough">The tough one</span></button>
-  </div>
-
-  <div class="phone-wrap">
-    <div class="phone">
-      <div class="screen-outer">
-        <div class="screen">
-          <div class="wa-header">
-            <div class="wa-avatar">S</div>
-            <div>
-              <div class="wa-title" id="wa-biz">Ubud Lotus Spa</div>
-              <div class="wa-status" data-i18n="online">online</div>
+<!-- ── Hero ── -->
+<section class="relative pt-xl pb-xl md:pt-[120px] md:pb-[80px] overflow-hidden">
+  <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+    <div class="fade-in-up">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-md text-label-md mb-md tracking-widest uppercase" data-i18n="heroEyebrow">Live Demo — Watch it reply</span>
+      <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md leading-tight" data-i18n="heroTitle">
+        Your WhatsApp now answers <em>every guest</em>. Any language. Any hour.
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-[540px]" data-i18n="heroSub">
+        Same number your guests already know. A trained receptionist behind it — replying in seconds, even at 11pm, even in French.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-md">
+        <a href="https://wa.me/REPLACE_WITH_JUSTIN_NUMBER?text=Hi%20Justin%2C%20saw%20the%20Justy%20demo%20%E2%80%94%20interested" target="_blank" rel="noopener"
+           class="bg-[#25D366] text-white px-8 py-4 rounded-2xl font-label-md text-label-md flex items-center justify-center gap-2 hover:shadow-lg transition-all group" data-i18n="heroCta">
+          <span class="material-symbols-outlined text-base">chat</span>
+          WhatsApp Justin
+        </a>
+        <a href="#demo" class="border border-outline-variant text-primary px-8 py-4 rounded-2xl font-label-md text-label-md hover:bg-surface-container-low transition-all text-center" data-i18n="heroDemo">
+          Watch the demo ↓
+        </a>
+      </div>
+    </div>
+    <!-- Hero visual — phone mockup -->
+    <div class="relative flex items-center justify-center fade-in-up" style="animation-delay:.2s">
+      <div class="absolute -z-10 w-[110%] h-[110%] bg-gradient-to-tr from-secondary/5 to-primary-container/5 rounded-full blur-3xl"></div>
+      <div class="relative w-[260px]">
+        <div class="bg-primary-container rounded-[2.8rem] p-3 shadow-[0_40px_100px_rgba(13,53,59,0.22)] border-[10px] border-surface-container-highest">
+          <div class="bg-[#e5ddd5] rounded-[2rem] overflow-hidden flex flex-col" style="height:520px">
+            <div class="bg-[#075e54] text-white p-3 flex items-center gap-2 flex-shrink-0">
+              <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center font-bold text-primary-container text-sm font-display-lg">S</div>
+              <div>
+                <p class="font-bold text-xs">Sari · Ubud Lotus Spa</p>
+                <p class="text-[9px] opacity-75" data-i18n="online">online</p>
+              </div>
+            </div>
+            <div class="flex-1 p-3 overflow-y-auto space-y-2 flex flex-col" id="hero-chat">
+              <div class="bg-white rounded-xl rounded-tl-none px-3 py-2 text-[11px] shadow-sm max-w-[85%] self-start">Bonjour ! Vous avez de la place pour un massage demain ? 🌺</div>
+              <div class="bg-[#dcf8c6] rounded-xl rounded-tr-none px-3 py-2 text-[11px] shadow-sm max-w-[85%] self-end">Bonjour ! 🌸 Oui, demain 14h00 ou 16h30. Massage 60 min (IDR 350k) ou 90 min (IDR 500k) ?</div>
+              <div class="bg-white rounded-xl rounded-tl-none px-3 py-2 text-[11px] shadow-sm max-w-[85%] self-start">90 min à 16h30 pour deux personnes</div>
+              <div class="bg-[#dcf8c6] rounded-xl rounded-tr-none px-3 py-2 text-[11px] shadow-sm max-w-[85%] self-end">Parfait ✅ 90 min · 16h30 · 2 personnes · IDR 1.000k. Je confirme ?</div>
+              <div class="bg-white rounded-xl rounded-tl-none px-3 py-2 text-[11px] shadow-sm max-w-[85%] self-start">Oui merci !</div>
+              <div class="bg-[#dcf8c6] rounded-xl rounded-tr-none px-3 py-2 text-[11px] shadow-sm max-w-[85%] self-end">C'est confirmé ✅ À demain 16h30 !</div>
+            </div>
+            <div class="bg-white p-2 flex gap-2 flex-shrink-0">
+              <div class="flex-1 bg-surface-container-low rounded-full px-3 py-1.5 text-[10px] text-on-surface-variant">Message…</div>
+              <div class="w-7 h-7 rounded-full bg-[#128c7e] flex items-center justify-center text-white">
+                <span class="material-symbols-outlined text-xs">send</span>
+              </div>
             </div>
           </div>
-          <div class="wa-body" id="wa-body"></div>
         </div>
-        <div class="tg-alert" id="tg-alert">
-          <div class="tg-head"><span class="tg-dot"></span><span data-i18n="tgHead">Telegram — alert to owner</span></div>
-          <div id="tg-text">Refund request from +62 813-XXXX. AI paused. Last messages attached.</div>
-          <div class="tg-btns"><span data-i18n="tgTake">Take over</span><span data-i18n="tgSend">Send AI draft</span><span data-i18n="tgIgnore">Dismiss</span></div>
+        <!-- floating badge -->
+        <div class="absolute -bottom-3 -right-6 bg-white rounded-2xl shadow-lg px-3 py-2 border border-outline-variant/20">
+          <p class="text-[10px] font-bold text-[#128c7e] uppercase tracking-wider">Replied in 1.4s</p>
+          <p class="text-[9px] text-on-surface-variant">14 languages supported</p>
         </div>
       </div>
     </div>
   </div>
-  <button class="replay" onclick="playScenario(currentScn)" data-i18n="replay">▶ Replay conversation</button>
 </section>
 
-<div class="songket"></div>
-
-<section class="facts container">
-  <div class="section-head">
-    <h2 data-i18n="factsH">What you just watched</h2>
-    <p data-i18n="factsP">No app for your guests. No new system for your staff. Justy works inside the WhatsApp you already use.</p>
-  </div>
-  <div class="facts-grid">
-    <div class="fact"><h3 data-i18n="f1h">Replies like a person</h3><p data-i18n="f1p">Reads, pauses, types. Guests see a receptionist who knows your services, prices and hours — not a robot menu.</p></div>
-    <div class="fact"><h3 data-i18n="f2h">Speaks your guest's language</h3><p data-i18n="f2p">English, Bahasa Indonesia, French and Chinese today. The guest writes — Justy answers in the same language.</p></div>
-    <div class="fact"><h3 data-i18n="f3h">Knows when to call you</h3><p data-i18n="f3p">Complaints, refunds, anything sensitive — Justy stops, tells the guest your team is coming, and alerts you instantly on Telegram.</p></div>
-  </div>
-</section>
-
-<section class="steps container">
-  <div class="section-head">
-    <h2 data-i18n="stepsH">Up and running in one visit</h2>
-    <p data-i18n="stepsP">We come to you. Setup is done in under an hour, on your premises.</p>
-  </div>
-  <div class="steps-grid">
-    <div class="step"><span class="k">I</span><h3 data-i18n="s1h">Keep your number</h3><p data-i18n="s1p">Guests message the same WhatsApp number on your sign, your Instagram, your Google listing. Nothing changes for them.</p></div>
-    <div class="step"><span class="k">II</span><h3 data-i18n="s2h">We learn your business</h3><p data-i18n="s2p">A short interview about your services, prices and rules. You review and approve every answer Justy is allowed to give.</p></div>
-    <div class="step"><span class="k">III</span><h3 data-i18n="s3h">You stay in control</h3><p data-i18n="s3p">Watch every conversation. Take over any chat in one tap. Justy is your receptionist — you are still the boss.</p></div>
+<!-- ── Problem / Solution Coverflow ── -->
+<section class="py-xl bg-surface-container-low coverflow-section" id="problems">
+  <div class="max-w-container-max mx-auto px-gutter">
+    <div class="text-center mb-lg">
+      <h2 class="font-display-lg text-headline-md text-primary mb-base" data-i18n="cfTitle">What you are really up against</h2>
+      <p class="text-on-surface-variant font-body-md text-body-md" data-i18n="cfSub">Swipe through — every slide is a real problem Bali businesses face every day</p>
+    </div>
+    <div class="coverflow-outer" id="cf-outer">
+      <div class="coverflow-track" id="cf-track">
+        <!-- slides injected by JS -->
+      </div>
+    </div>
+    <div class="cf-dots" id="cf-dots"></div>
+    <div class="cf-arrows">
+      <button class="cf-arr" id="cf-prev" onclick="cfMove(-1)" disabled>&#8592;</button>
+      <button class="cf-arr" id="cf-next" onclick="cfMove(1)">&#8594;</button>
+    </div>
+    <div class="cf-progress"><div class="cf-progress-bar" id="cf-bar"></div></div>
   </div>
 </section>
 
-<div class="songket"></div>
+<!-- ── Live Demo ── -->
+<section class="py-xl" id="demo">
+  <div class="max-w-container-max mx-auto px-gutter">
+    <div class="text-center mb-xl">
+      <h2 class="font-display-lg text-headline-md text-primary mb-base" data-i18n="demoTitle">See Sari in action</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="demoSub">Pick a scenario — watch a real conversation play out</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-xl items-center">
+      <!-- Scenario buttons -->
+      <div class="lg:col-span-5 flex flex-col gap-sm">
+        <button class="scenario-btn active group text-left p-md rounded-2xl border-2 border-secondary bg-secondary/5 transition-all" data-scn="spa" onclick="playScenario('spa')">
+          <div class="flex items-center gap-sm mb-xs">
+            <span class="material-symbols-outlined text-primary-container">spa</span>
+            <span class="font-label-md text-label-md font-bold" data-i18n="chipSpa">🇫🇷 Spa — French guest</span>
+          </div>
+          <p class="font-body-md text-caption text-on-surface-variant" data-i18n="chipSpaDesc">Availability, pricing, full booking confirmation in French.</p>
+        </button>
+        <button class="scenario-btn group text-left p-md rounded-2xl border-2 border-outline-variant hover:border-secondary transition-all bg-white" data-scn="gym" onclick="playScenario('gym')">
+          <div class="flex items-center gap-sm mb-xs">
+            <span class="material-symbols-outlined text-primary-container">fitness_center</span>
+            <span class="font-label-md text-label-md font-bold" data-i18n="chipGym">🇬🇧 Gym — 11pm enquiry</span>
+          </div>
+          <p class="font-body-md text-caption text-on-surface-variant" data-i18n="chipGymDesc">Trial class booked at 11pm. No staff needed.</p>
+        </button>
+        <button class="scenario-btn group text-left p-md rounded-2xl border-2 border-outline-variant hover:border-secondary transition-all bg-white" data-scn="resto" onclick="playScenario('resto')">
+          <div class="flex items-center gap-sm mb-xs">
+            <span class="material-symbols-outlined text-primary-container">restaurant</span>
+            <span class="font-label-md text-label-md font-bold" data-i18n="chipResto">🇨🇳 Restaurant — Mandarin</span>
+          </div>
+          <p class="font-body-md text-caption text-on-surface-variant" data-i18n="chipRestoDesc">Table for 4, vegetarian query, fully confirmed in Chinese.</p>
+        </button>
+        <button class="scenario-btn group text-left p-md rounded-2xl border-2 border-outline-variant hover:border-secondary transition-all bg-white" data-scn="tough" onclick="playScenario('tough')">
+          <div class="flex items-center gap-sm mb-xs">
+            <span class="material-symbols-outlined text-primary-container">support_agent</span>
+            <span class="font-label-md text-label-md font-bold" data-i18n="chipTough">🇮🇩 The tough one</span>
+          </div>
+          <p class="font-body-md text-caption text-on-surface-variant" data-i18n="chipToughDesc">Refund request in Bahasa — Justy stops and calls the owner.</p>
+        </button>
+        <button class="mt-2 text-sm text-on-surface-variant underline underline-offset-2 text-left pl-1 hover:text-primary transition-colors" onclick="playScenario(currentScn)" data-i18n="replay">▶ Replay conversation</button>
+      </div>
 
-<section class="control container">
-  <div class="section-head">
-    <h2 data-i18n="ctrlH">Bookings are confirmed by the guest — never guessed</h2>
-  </div>
-  <div class="control-card">
-    <p data-i18n="ctrlP">Justy never finalises a booking without the guest saying yes. It never promises a price you didn't approve. And when it isn't sure, it asks you — not the guest's patience.</p>
+      <!-- Phone frame -->
+      <div class="lg:col-span-7 flex justify-center">
+        <div class="relative w-[340px]">
+          <div class="bg-primary-container rounded-[3.5rem] p-4 shadow-[0_40px_100px_rgba(13,53,59,0.18)] border-[12px] border-surface-container-highest">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-7 bg-surface-container-highest rounded-b-3xl z-20"></div>
+            <div class="bg-[#e5ddd5] w-full rounded-[2.5rem] overflow-hidden relative flex flex-col" style="height:clamp(560px,72vh,680px)">
+              <!-- Chat header -->
+              <div class="bg-[#075e54] text-white p-4 flex items-center gap-3 flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center font-bold text-primary-container font-display-lg text-sm">S</div>
+                <div>
+                  <p class="font-bold text-sm" id="wa-biz">Ubud Lotus Spa</p>
+                  <p class="text-[10px] opacity-80" data-i18n="online">online</p>
+                </div>
+              </div>
+              <!-- Messages -->
+              <div class="flex-1 p-4 overflow-y-auto space-y-3 flex flex-col" id="chat-messages"></div>
+              <!-- Typing indicator -->
+              <div class="hidden px-4 pb-2 flex-shrink-0" id="typing-indicator">
+                <div class="bg-white rounded-lg px-3 py-1.5 inline-flex gap-1">
+                  <div class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></div>
+                  <div class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot" style="animation-delay:.2s"></div>
+                  <div class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot" style="animation-delay:.4s"></div>
+                </div>
+              </div>
+              <!-- Telegram alert -->
+              <div class="absolute top-16 left-3 right-3 bg-white/96 backdrop-blur shadow-xl rounded-2xl p-3 transform -translate-y-[120%] opacity-0 transition-all duration-500 z-30 flex items-start gap-3 border-l-4 border-blue-500" id="tg-alert">
+                <div class="bg-blue-500 text-white p-1 rounded-full mt-0.5 flex-shrink-0">
+                  <span class="material-symbols-outlined text-sm">notifications</span>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold text-blue-500 uppercase tracking-wider mb-0.5" data-i18n="tgHead">Telegram — Owner Alert</p>
+                  <p class="text-[11px] text-on-surface" id="tg-text">Refund request. AI paused. Full conversation attached.</p>
+                  <div class="flex gap-2 mt-2">
+                    <span class="text-[9px] font-semibold border border-blue-300 text-blue-500 rounded-md px-2 py-0.5" data-i18n="tgTake">Take over</span>
+                    <span class="text-[9px] font-semibold border border-blue-300 text-blue-500 rounded-md px-2 py-0.5" data-i18n="tgSend">Send AI draft</span>
+                    <span class="text-[9px] font-semibold border border-blue-300 text-blue-500 rounded-md px-2 py-0.5" data-i18n="tgIgnore">Dismiss</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Footer bar -->
+              <div class="bg-white p-3 flex gap-2 flex-shrink-0">
+                <div class="flex-1 bg-surface-container-low rounded-full px-4 py-2 text-[12px] text-on-surface-variant">Message…</div>
+                <div class="w-10 h-10 rounded-full bg-[#128c7e] flex items-center justify-center text-white">
+                  <span class="material-symbols-outlined text-sm">send</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="cta container">
-  <h2 data-i18n="ctaH">See it answer for <em>your</em> business</h2>
-  <p data-i18n="ctaP">10 minutes at your place. We'll show you live, on your own phone.</p>
-  <!-- TODO: replace with Justin's number, e.g. https://wa.me/628123456789 -->
-  <a class="wa-btn" href="https://wa.me/REPLACE_WITH_JUSTIN_NUMBER?text=Hi%20Justin%2C%20saw%20the%20Justy%20demo%20%E2%80%94%20interested" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.3-.5a.5.5 0 0 0 0-.5c-.1-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4 15 15 0 0 0 1.5.6 3.6 3.6 0 0 0 1.7.1 2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg>
-    <span data-i18n="ctaBtn">WhatsApp Justin</span>
-  </a>
-  <div class="note" data-i18n="ctaNote">No contract to see the demo. Bahasa or English — your choice.</div>
+<!-- ── Features ── -->
+<section class="py-xl bg-surface" id="features">
+  <div class="max-w-container-max mx-auto px-gutter">
+    <div class="text-center mb-xl">
+      <h2 class="font-display-lg text-headline-md text-primary" data-i18n="featTitle">What Justy does for you</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+      <div class="bg-white p-lg rounded-2xl shadow-sm border border-outline-variant/30 hover:shadow-md transition-shadow">
+        <span class="material-symbols-outlined text-secondary text-4xl mb-md">record_voice_over</span>
+        <h3 class="font-label-md text-headline-sm text-primary mb-sm" data-i18n="f1h">Replies like a person</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="f1p">Reads, pauses, types. Guests see a receptionist who knows your services, prices and hours — not a robot menu.</p>
+      </div>
+      <div class="bg-white p-lg rounded-2xl shadow-sm border border-outline-variant/30 hover:shadow-md transition-shadow">
+        <span class="material-symbols-outlined text-secondary text-4xl mb-md">translate</span>
+        <h3 class="font-label-md text-headline-sm text-primary mb-sm" data-i18n="f2h">Speaks your guest's language</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="f2p">English, Bahasa Indonesia, French and Mandarin today. Guest writes — Sari answers in the same language, instantly.</p>
+      </div>
+      <div class="bg-white p-lg rounded-2xl shadow-sm border border-outline-variant/30 hover:shadow-md transition-shadow">
+        <span class="material-symbols-outlined text-secondary text-4xl mb-md">notifications_active</span>
+        <h3 class="font-label-md text-headline-sm text-primary mb-sm" data-i18n="f3h">Knows when to call you</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="f3p">Complaints, refunds, anything sensitive — Justy stops, tells the guest your team is coming, and alerts you instantly on Telegram.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer>
-  <img src="justylogo.png" alt="" class="footer-logo">
-  <div data-i18n="footer">JUSTY · Balinese Hospitality Bot · Bali, Indonesia</div>
+<!-- ── Process ── -->
+<section class="py-xl bg-primary-container text-surface-bright" id="process">
+  <div class="max-w-container-max mx-auto px-gutter">
+    <div class="text-center mb-xl">
+      <h2 class="font-display-lg text-headline-md text-secondary-fixed" data-i18n="processTitle">Up and running in one visit.</h2>
+      <p class="text-on-primary-container mt-2 font-body-md text-body-md" data-i18n="processSub">We come to you. Setup done in under an hour, on your premises.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+      <div class="relative">
+        <span class="font-display-lg text-[80px] text-white/10 absolute -top-10 -left-4 leading-none">I</span>
+        <h3 class="font-headline-sm text-headline-sm mb-md" data-i18n="s1h">Keep your number</h3>
+        <p class="font-body-md text-on-primary-container" data-i18n="s1p">Guests message the same WhatsApp on your sign, Instagram, Google. Nothing changes for them.</p>
+      </div>
+      <div class="relative">
+        <span class="font-display-lg text-[80px] text-white/10 absolute -top-10 -left-4 leading-none">II</span>
+        <h3 class="font-headline-sm text-headline-sm mb-md" data-i18n="s2h">We learn your business</h3>
+        <p class="font-body-md text-on-primary-container" data-i18n="s2p">Short interview about your services, prices and rules. You review and approve every answer Sari is allowed to give.</p>
+      </div>
+      <div class="relative">
+        <span class="font-display-lg text-[80px] text-white/10 absolute -top-10 -left-4 leading-none">III</span>
+        <h3 class="font-headline-sm text-headline-sm mb-md" data-i18n="s3h">You stay in control</h3>
+        <p class="font-body-md text-on-primary-container" data-i18n="s3p">Watch every conversation. Take over any chat in one tap. Sari is your receptionist — you are still the boss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="py-xl relative">
+  <div class="max-w-[960px] mx-auto px-gutter text-center bg-white p-lg md:p-xl rounded-3xl shadow-xl border border-secondary/10 overflow-hidden">
+    <div class="absolute inset-0 songket-pattern opacity-5 pointer-events-none"></div>
+    <h2 class="font-display-lg text-headline-md text-primary mb-md" data-i18n="ctaTitle">See it answer for <em>your</em> business.</h2>
+    <p class="font-body-lg text-body-lg text-on-surface-variant mb-lg" data-i18n="ctaSub">10 minutes at your place. We'll show you live, on your own phone.</p>
+    <a href="https://wa.me/REPLACE_WITH_JUSTIN_NUMBER?text=Hi%20Justin%2C%20saw%20the%20Justy%20demo%20%E2%80%94%20interested" target="_blank" rel="noopener"
+       class="bg-[#25D366] text-white px-10 py-5 rounded-full font-label-md text-headline-sm inline-flex items-center justify-center gap-3 mx-auto hover:scale-105 transition-transform shadow-lg">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.3-.5a.5.5 0 0 0 0-.5c-.1-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4 15 15 0 0 0 1.5.6 3.6 3.6 0 0 0 1.7.1 2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg>
+      <span data-i18n="ctaBtn">WhatsApp Justin</span>
+    </a>
+    <p class="text-sm text-on-surface-variant mt-4 opacity-75" data-i18n="ctaNote">No contract to see the demo. Bahasa or English — your choice.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-surface-container-low border-t border-outline-variant/20">
+  <div class="flex flex-col md:flex-row justify-between items-center px-gutter py-xl gap-md w-full max-w-container-max mx-auto">
+    <div class="flex flex-col gap-2 items-center md:items-start">
+      <img alt="Justy" class="h-10 w-auto" src="https://github.com/JustyBali/JustyBali.github.io/blob/main/justylogo.png?raw=true"/>
+      <p class="font-body-md text-label-md text-on-surface-variant" data-i18n="footer">© 2025 Justy · Balinese Hospitality Bot · Bali, Indonesia</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-md">
+      <a class="text-on-surface-variant hover:underline decoration-secondary transition-all font-label-md text-label-md" href="#problems">Why Justy</a>
+      <a class="text-on-surface-variant hover:underline decoration-secondary transition-all font-label-md text-label-md" href="#demo">Live Demo</a>
+      <a class="text-on-surface-variant hover:underline decoration-secondary transition-all font-label-md text-label-md" href="#features">Features</a>
+      <a class="text-on-surface-variant hover:underline decoration-secondary transition-all font-label-md text-label-md" href="#process">How it works</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-/* ───────── Page copy i18n ───────── */
-const STR = {
-  en: {
-    tagline:"Balinese Hospitality Bot",
-    eyebrow:"Live demo — watch it reply",
-    h1:'Your WhatsApp now answers <em>every guest</em>. Any language. Any hour.',
-    h1sub:"Same number your guests already know. A trained receptionist behind it, replying in seconds — even at 11pm.",
-    chipSpa:"Spa — French guest", chipGym:"Gym — trial class", chipResto:"Restaurant — reservation", chipTough:"The tough one",
-    online:"online", replay:"▶ Replay conversation",
-    tgHead:"Telegram — alert to owner", tgTake:"Take over", tgSend:"Send AI draft", tgIgnore:"Dismiss",
-    factsH:"What you just watched",
-    factsP:"No app for your guests. No new system for your staff. Justy works inside the WhatsApp you already use.",
-    f1h:"Replies like a person", f1p:"Reads, pauses, types. Guests see a receptionist who knows your services, prices and hours — not a robot menu.",
-    f2h:"Speaks your guest's language", f2p:"English, Bahasa Indonesia, French and Chinese today. The guest writes — Justy answers in the same language.",
-    f3h:"Knows when to call you", f3p:"Complaints, refunds, anything sensitive — Justy stops, tells the guest your team is coming, and alerts you instantly on Telegram.",
-    stepsH:"Up and running in one visit", stepsP:"We come to you. Setup is done in under an hour, on your premises.",
-    s1h:"Keep your number", s1p:"Guests message the same WhatsApp number on your sign, your Instagram, your Google listing. Nothing changes for them.",
-    s2h:"We learn your business", s2p:"A short interview about your services, prices and rules. You review and approve every answer Justy is allowed to give.",
-    s3h:"You stay in control", s3p:"Watch every conversation. Take over any chat in one tap. Justy is your receptionist — you are still the boss.",
-    ctrlH:"Bookings are confirmed by the guest — never guessed",
-    ctrlP:"Justy never finalises a booking without the guest saying yes. It never promises a price you didn't approve. And when it isn't sure, it asks you — not the guest's patience.",
-    ctaH:'See it answer for <em>your</em> business', ctaP:"10 minutes at your place. We'll show you live, on your own phone.",
-    ctaBtn:"WhatsApp Justin", ctaNote:"No contract to see the demo. Bahasa or English — your choice.",
-    footer:"JUSTY · Balinese Hospitality Bot · Bali, Indonesia",
-    tgText:"Refund request from +62 813-XXXX. AI paused. Last messages attached."
-  },
-  id: {
-    tagline:"Bot Hospitality Bali",
-    eyebrow:"Demo langsung — lihat dia membalas",
-    h1:'WhatsApp Anda kini menjawab <em>setiap tamu</em>. Bahasa apa pun. Jam berapa pun.',
-    h1sub:"Nomor yang sama yang sudah dikenal tamu Anda. Di baliknya, resepsionis terlatih yang membalas dalam hitungan detik — bahkan jam 11 malam.",
-    chipSpa:"Spa — tamu Prancis", chipGym:"Gym — kelas percobaan", chipResto:"Restoran — reservasi", chipTough:"Yang paling sulit",
-    online:"online", replay:"▶ Putar ulang percakapan",
-    tgHead:"Telegram — notifikasi ke pemilik", tgTake:"Ambil alih", tgSend:"Kirim draf AI", tgIgnore:"Abaikan",
-    factsH:"Yang baru saja Anda lihat",
-    factsP:"Tanpa aplikasi untuk tamu. Tanpa sistem baru untuk staf. Justy bekerja di dalam WhatsApp yang sudah Anda pakai.",
-    f1h:"Membalas seperti manusia", f1p:"Membaca, jeda, mengetik. Tamu melihat resepsionis yang tahu layanan, harga, dan jam buka Anda — bukan menu robot.",
-    f2h:"Bicara bahasa tamu Anda", f2p:"Inggris, Bahasa Indonesia, Prancis, dan Mandarin saat ini. Tamu menulis — Justy menjawab dalam bahasa yang sama.",
-    f3h:"Tahu kapan harus memanggil Anda", f3p:"Komplain, refund, hal sensitif — Justy berhenti, memberi tahu tamu bahwa tim Anda akan menghubungi, dan langsung mengirim notifikasi Telegram ke Anda.",
-    stepsH:"Aktif dalam satu kunjungan", stepsP:"Kami datang ke tempat Anda. Pemasangan selesai kurang dari satu jam.",
-    s1h:"Nomor Anda tetap", s1p:"Tamu mengirim pesan ke nomor WhatsApp yang sama di papan nama, Instagram, dan Google Anda. Tidak ada yang berubah bagi mereka.",
-    s2h:"Kami pelajari bisnis Anda", s2p:"Wawancara singkat tentang layanan, harga, dan aturan. Anda meninjau dan menyetujui setiap jawaban yang boleh diberikan Justy.",
-    s3h:"Anda tetap memegang kendali", s3p:"Pantau setiap percakapan. Ambil alih chat apa pun dengan satu sentuhan. Justy resepsionis Anda — Anda tetap bosnya.",
-    ctrlH:"Booking dikonfirmasi oleh tamu — tidak pernah ditebak",
-    ctrlP:"Justy tidak pernah memfinalkan booking tanpa tamu bilang ya. Tidak pernah menjanjikan harga yang belum Anda setujui. Dan saat ragu, dia bertanya kepada Anda — bukan menguji kesabaran tamu.",
-    ctaH:'Lihat dia menjawab untuk bisnis <em>Anda</em>', ctaP:"10 menit di tempat Anda. Kami tunjukkan langsung, di HP Anda sendiri.",
-    ctaBtn:"WhatsApp Justin", ctaNote:"Tidak perlu kontrak untuk melihat demo. Bahasa atau Inggris — terserah Anda.",
-    footer:"JUSTY · Bot Hospitality Bali · Bali, Indonesia",
-    tgText:"Permintaan refund dari +62 813-XXXX. AI dijeda. Pesan terakhir terlampir."
-  }
-};
-let pageLang = 'en';
-function setPageLang(l){
-  pageLang = l;
-  document.getElementById('btn-en').classList.toggle('active', l==='en');
-  document.getElementById('btn-id').classList.toggle('active', l==='id');
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k = el.getAttribute('data-i18n');
-    if(STR[l][k]) el.innerHTML = STR[l][k];
-  });
-  document.getElementById('tg-text').textContent = STR[l].tgText;
-  document.documentElement.lang = l;
+/* ══════════════════════════════════════════
+   COVERFLOW SLIDE DATA
+══════════════════════════════════════════ */
+const CF_SLIDES = [
+  { theme:'dark', icon:'📵', tag:'Lost money',         title:'Guests message at 11pm. Nobody answers. They book somewhere else.',           body:'A French tourist plans her Bali trip from Paris — midnight her time. She messages three spas. The one that replies first gets the booking. You are asleep. Your competitor is not.' },
+  { theme:'light',icon:'🌐', tag:'Lost guests',        title:'They write in Mandarin or French. Your staff replies in broken English.',      body:'More than half of Bali\'s visitors are not native English speakers. Every message your team can\'t confidently answer is a guest who feels ignored — and books elsewhere.' },
+  { theme:'dark', icon:'💸', tag:'If you build it',    title:'A developer quotes SGD 8,000 — then SGD 500/month to keep it running.',        body:'Before writing a single line of code they need hosting, AI API credits, a WhatsApp integration, a booking system, and someone to maintain it all. The quote always grows.' },
+  { theme:'light',icon:'🏛️', tag:'The Meta wall',      title:'WhatsApp\'s official API requires Meta Business verification. 6–18 months.',   body:'To send automated messages officially you need a verified Meta Business Account, a registered legal entity, and a compliance audit. Most Bali SMEs never qualify. Justy works today — no Meta approval needed.' },
+  { theme:'dark', icon:'🧾', tag:'Subscription trap',  title:'Five separate tools. Five invoices. None of them talk to each other.',         body:'Chatbot platform. Booking system. Payment gateway. Translation API. CRM. Each USD 30–80/month. You spend more time managing tools than serving guests — and they still don\'t work together.' },
+  { theme:'light',icon:'✅', tag:'One fix',             title:'Justy replaces all of it. One number. One flat fee. Working today.',           body:'Your existing WhatsApp number. No new app for guests. No developer. No Meta registration. No five-tool stack. Replies in Bahasa, English, French and Mandarin — from the moment we switch it on.' },
+  { theme:'dark', icon:'🛡️', tag:'You stay in charge', title:'For anything sensitive, Justy stops and calls you on Telegram. Every time.',   body:'Complaints. Refunds. Unusual requests. Justy never guesses on the hard ones — it pauses, tells the guest your team is coming, and sends you an instant Telegram alert with the full conversation.' },
+];
+
+const cfTrack  = document.getElementById('cf-track');
+const cfDots   = document.getElementById('cf-dots');
+const cfBar    = document.getElementById('cf-bar');
+const cfPrev   = document.getElementById('cf-prev');
+const cfNext   = document.getElementById('cf-next');
+let cfIdx = 0;
+
+// Build slides
+CF_SLIDES.forEach((s, i) => {
+  const slide = document.createElement('div');
+  slide.className = 'cf-slide';
+  slide.onclick = () => { if(i !== cfIdx) cfGo(i); };
+  slide.innerHTML = `
+    <div class="cf-card ${s.theme}">
+      <span class="cf-icon">${s.icon}</span>
+      <span class="cf-tag">${s.tag}</span>
+      <h3>${s.title}</h3>
+      <p>${s.body}</p>
+    </div>`;
+  cfTrack.appendChild(slide);
+
+  const dot = document.createElement('button');
+  dot.className = 'cf-dot' + (i===0?' active':'');
+  dot.setAttribute('aria-label','Slide '+(i+1));
+  dot.onclick = () => cfGo(i);
+  cfDots.appendChild(dot);
+});
+
+const cfSlideEls = cfTrack.querySelectorAll('.cf-slide');
+
+function cfTransform(offset){
+  const abs = Math.abs(offset);
+  return {
+    rotateY:   offset * -44,
+    translateX: offset * 64,
+    translateZ: abs === 0 ? 0 : -110 - (abs-1)*55,
+    scale:     abs === 0 ? 1 : Math.max(0.74 - (abs-1)*0.07, 0.55),
+    opacity:   abs === 0 ? 1 : Math.max(0.52 - (abs-1)*0.14, 0.18),
+    zIndex:    100 - abs*10,
+  };
 }
 
-/* ───────── Demo scenarios ─────────
-   Verified capability only: EN / ID / FR / ZH.
-   t = typing delay before Sari's reply (ms). */
+function cfGo(i){
+  cfIdx = Math.max(0, Math.min(CF_SLIDES.length-1, i));
+  cfSlideEls.forEach((el, n) => {
+    const t = cfTransform(n - cfIdx);
+    el.style.transform  = `translateX(${t.translateX}%) translateZ(${t.translateZ}px) rotateY(${t.rotateY}deg) scale(${t.scale})`;
+    el.style.opacity    = t.opacity;
+    el.style.zIndex     = t.zIndex;
+    el.style.pointerEvents = Math.abs(n-cfIdx) <= 2 ? 'auto' : 'none';
+  });
+  document.querySelectorAll('.cf-dot').forEach((d,n) => d.classList.toggle('active', n===cfIdx));
+  cfPrev.disabled = cfIdx === 0;
+  cfNext.disabled = cfIdx === CF_SLIDES.length-1;
+  if(cfBar) cfBar.style.width = ((cfIdx+1)/CF_SLIDES.length*100)+'%';
+}
+function cfMove(dir){ cfGo(cfIdx+dir); }
+
+// Touch
+let cfTsX = 0;
+document.getElementById('cf-outer').addEventListener('touchstart', e=>{ cfTsX=e.touches[0].clientX; },{passive:true});
+document.getElementById('cf-outer').addEventListener('touchend',   e=>{ if(Math.abs(cfTsX-e.changedTouches[0].clientX)>40) cfMove(cfTsX>e.changedTouches[0].clientX?1:-1); },{passive:true});
+
+// Keyboard
+document.getElementById('cf-outer').setAttribute('tabindex','0');
+document.getElementById('cf-outer').addEventListener('keydown', e=>{ if(e.key==='ArrowRight') cfMove(1); if(e.key==='ArrowLeft') cfMove(-1); });
+
+cfGo(0);
+
+/* ══════════════════════════════════════════
+   DEMO PLAYER
+══════════════════════════════════════════ */
 const SCN = {
   spa: {
     biz:"Ubud Lotus Spa",
@@ -442,77 +592,165 @@ const SCN = {
   }
 };
 
-/* ───────── Player ───────── */
 let currentScn = 'spa';
 let playToken = 0;
-const body = document.getElementById('wa-body');
-const bizEl = document.getElementById('wa-biz');
-const tgEl = document.getElementById('tg-alert');
-const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const chatMessages   = document.getElementById('chat-messages');
+const typingIndicator= document.getElementById('typing-indicator');
+const tgAlert        = document.getElementById('tg-alert');
+const waBiz          = document.getElementById('wa-biz');
+const reduced        = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function bubbleEl(m){
-  const d = document.createElement('div');
-  d.className = 'bubble ' + (m.dir==='in'?'in':'out');
-  d.textContent = m.text;
+function addMessage(m){
+  const wrap = document.createElement('div');
+  wrap.className = `flex ${m.dir==='in'?'justify-start':'justify-end'} whatsapp-bubble-in`;
+  const bubble = document.createElement('div');
+  bubble.className = `max-w-[82%] rounded-2xl px-3 py-2 text-[13px] shadow-sm ${m.dir==='in'?'bg-white text-on-surface rounded-tl-none border border-black/5':'bg-[#dcf8c6] text-on-surface rounded-tr-none'}`;
+  bubble.style.whiteSpace = 'pre-line';
+  bubble.textContent = m.text;
   if(m.xlate){
     const x = document.createElement('span');
-    x.className = 'xlate'; x.textContent = m.xlate;
-    d.appendChild(x);
+    x.style.cssText = 'display:block;font-size:.68rem;font-style:italic;color:rgba(0,0,0,.45);margin-top:4px;border-top:1px dashed rgba(0,0,0,.12);padding-top:3px';
+    x.textContent = m.xlate;
+    bubble.appendChild(x);
   }
   const t = document.createElement('span');
-  t.className = 'time'; t.textContent = m.time;
-  d.appendChild(t);
-  return d;
+  t.style.cssText = 'display:block;font-size:.6rem;color:rgba(0,0,0,.38);text-align:right;margin-top:2px';
+  t.textContent = m.time;
+  bubble.appendChild(t);
+  wrap.appendChild(bubble);
+  chatMessages.appendChild(wrap);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 }
-function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
 async function playScenario(key){
   currentScn = key;
   const token = ++playToken;
   const scn = SCN[key];
-  bizEl.textContent = scn.biz;
-  body.innerHTML = '';
-  tgEl.classList.remove('show');
+  waBiz.textContent = scn.biz;
+  chatMessages.innerHTML = '';
+  tgAlert.classList.remove('opacity-100','translate-y-0');
+  tgAlert.classList.add('opacity-0','-translate-y-[120%]');
 
-  document.querySelectorAll('#scenario-chips .chip').forEach(c=>{
-    c.classList.toggle('active', c.dataset.scn===key);
+  document.querySelectorAll('.scenario-btn').forEach(b=>{
+    const active = b.dataset.scn === key;
+    b.classList.toggle('active', active);
+    b.classList.toggle('border-secondary', active);
+    b.classList.toggle('bg-secondary/5', active);
+    b.classList.toggle('border-outline-variant', !active);
+    b.classList.toggle('bg-white', !active);
   });
 
   if(reduced){
-    scn.msgs.forEach(m=>body.appendChild(bubbleEl(m)));
-    if(scn.tg) tgEl.classList.add('show');
-    body.scrollTop = body.scrollHeight;
+    scn.msgs.forEach(m => addMessage(m));
+    if(scn.tg) showTg();
     return;
   }
 
   for(const m of scn.msgs){
     if(token !== playToken) return;
     if(m.dir==='out'){
-      await sleep(700);
+      await sleep(600);
       if(token !== playToken) return;
-      const tp = document.createElement('div');
-      tp.className='typing'; tp.innerHTML='<i></i><i></i><i></i>';
-      body.appendChild(tp); body.scrollTop = body.scrollHeight;
+      typingIndicator.classList.remove('hidden');
       await sleep(m.t || 1500);
-      tp.remove();
-      if(token !== playToken) return;
+      typingIndicator.classList.add('hidden');
     } else {
-      await sleep(900);
-      if(token !== playToken) return;
+      await sleep(800);
     }
-    body.appendChild(bubbleEl(m));
-    body.scrollTop = body.scrollHeight;
+    if(token !== playToken) return;
+    addMessage(m);
   }
   if(scn.tg && token === playToken){
-    await sleep(800);
-    if(token === playToken) tgEl.classList.add('show');
+    await sleep(700);
+    showTg();
   }
 }
 
-document.querySelectorAll('#scenario-chips .chip').forEach(c=>{
-  c.addEventListener('click', ()=>playScenario(c.dataset.scn));
+function showTg(){
+  tgAlert.classList.remove('opacity-0','-translate-y-[120%]');
+  tgAlert.classList.add('opacity-100','translate-y-0');
+}
+
+/* ══════════════════════════════════════════
+   i18n
+══════════════════════════════════════════ */
+const STR = {
+  en:{
+    navCta:"Get Started", heroEyebrow:"Live Demo — Watch it reply",
+    heroTitle:"Your WhatsApp now answers <em>every guest</em>. Any language. Any hour.",
+    heroSub:"Same number your guests already know. A trained receptionist behind it — replying in seconds, even at 11pm, even in French.",
+    heroCta:"WhatsApp Justin", heroDemo:"Watch the demo ↓",
+    online:"online",
+    cfTitle:"What you are really up against",
+    cfSub:"Swipe through — every slide is a real problem Bali businesses face every day",
+    demoTitle:"See Sari in action", demoSub:"Pick a scenario — watch a real conversation play out",
+    chipSpa:"🇫🇷 Spa — French guest", chipSpaDesc:"Availability, pricing, full booking confirmation in French.",
+    chipGym:"🇬🇧 Gym — 11pm enquiry", chipGymDesc:"Trial class booked at 11pm. No staff needed.",
+    chipResto:"🇨🇳 Restaurant — Mandarin", chipRestoDesc:"Table for 4, vegetarian query, fully confirmed in Chinese.",
+    chipTough:"🇮🇩 The tough one", chipToughDesc:"Refund request in Bahasa — Justy stops and calls the owner.",
+    replay:"▶ Replay conversation",
+    tgHead:"Telegram — Owner Alert", tgTake:"Take over", tgSend:"Send AI draft", tgIgnore:"Dismiss",
+    featTitle:"What Justy does for you",
+    f1h:"Replies like a person", f1p:"Reads, pauses, types. Guests see a receptionist who knows your services, prices and hours — not a robot menu.",
+    f2h:"Speaks your guest's language", f2p:"English, Bahasa Indonesia, French and Mandarin today. Guest writes — Sari answers in the same language, instantly.",
+    f3h:"Knows when to call you", f3p:"Complaints, refunds, anything sensitive — Justy stops, tells the guest your team is coming, and alerts you instantly on Telegram.",
+    processTitle:"Up and running in one visit.",
+    processSub:"We come to you. Setup done in under an hour, on your premises.",
+    s1h:"Keep your number", s1p:"Guests message the same WhatsApp on your sign, Instagram, Google. Nothing changes for them.",
+    s2h:"We learn your business", s2p:"Short interview about your services, prices and rules. You review and approve every answer Sari is allowed to give.",
+    s3h:"You stay in control", s3p:"Watch every conversation. Take over any chat in one tap. Sari is your receptionist — you are still the boss.",
+    ctaTitle:"See it answer for <em>your</em> business.",
+    ctaSub:"10 minutes at your place. We'll show you live, on your own phone.",
+    ctaBtn:"WhatsApp Justin", ctaNote:"No contract to see the demo. Bahasa or English — your choice.",
+    footer:"© 2025 Justy · Balinese Hospitality Bot · Bali, Indonesia"
+  },
+  id:{
+    navCta:"Mulai Sekarang", heroEyebrow:"Demo Langsung — Lihat balasannya",
+    heroTitle:"WhatsApp Anda kini menjawab <em>setiap tamu</em>. Bahasa apa pun. Jam berapa pun.",
+    heroSub:"Nomor yang sama yang sudah dikenal tamu. Resepsionis terlatih di baliknya — membalas dalam hitungan detik, bahkan jam 11 malam, bahkan dalam bahasa Prancis.",
+    heroCta:"WhatsApp Justin", heroDemo:"Lihat demonya ↓",
+    online:"online",
+    cfTitle:"Apa yang sebenarnya Anda hadapi",
+    cfSub:"Geser — setiap slide adalah masalah nyata yang dihadapi bisnis Bali setiap hari",
+    demoTitle:"Lihat Sari beraksi", demoSub:"Pilih skenario — saksikan percakapan nyata berlangsung",
+    chipSpa:"🇫🇷 Spa — tamu Prancis", chipSpaDesc:"Ketersediaan, harga, konfirmasi booking lengkap dalam bahasa Prancis.",
+    chipGym:"🇬🇧 Gym — pertanyaan jam 11 malam", chipGymDesc:"Kelas percobaan dipesan jam 11 malam. Tanpa staf.",
+    chipResto:"🇨🇳 Restoran — Mandarin", chipRestoDesc:"Meja untuk 4, pertanyaan vegetarian, dikonfirmasi dalam bahasa Mandarin.",
+    chipTough:"🇮🇩 Yang paling sulit", chipToughDesc:"Permintaan refund dalam Bahasa — Justy berhenti dan menghubungi pemilik.",
+    replay:"▶ Putar ulang percakapan",
+    tgHead:"Telegram — Notifikasi Pemilik", tgTake:"Ambil alih", tgSend:"Kirim draf AI", tgIgnore:"Abaikan",
+    featTitle:"Apa yang Justy lakukan untuk Anda",
+    f1h:"Membalas seperti manusia", f1p:"Membaca, jeda, mengetik. Tamu melihat resepsionis yang tahu layanan, harga, dan jam buka — bukan menu robot.",
+    f2h:"Bicara bahasa tamu Anda", f2p:"Inggris, Bahasa Indonesia, Prancis, dan Mandarin. Tamu menulis — Sari menjawab dalam bahasa yang sama, seketika.",
+    f3h:"Tahu kapan harus memanggil Anda", f3p:"Keluhan, refund, hal sensitif — Justy berhenti, memberi tahu tamu tim Anda akan datang, dan langsung mengirim notifikasi Telegram.",
+    processTitle:"Aktif dalam satu kunjungan.",
+    processSub:"Kami datang ke tempat Anda. Pemasangan selesai kurang dari satu jam.",
+    s1h:"Nomor Anda tetap", s1p:"Tamu mengirim pesan ke WhatsApp yang sama di papan nama, Instagram, Google. Tidak ada yang berubah bagi mereka.",
+    s2h:"Kami pelajari bisnis Anda", s2p:"Wawancara singkat tentang layanan, harga, dan aturan. Anda meninjau dan menyetujui setiap jawaban yang boleh diberikan Sari.",
+    s3h:"Anda tetap memegang kendali", s3p:"Pantau setiap percakapan. Ambil alih chat apa pun dengan satu sentuhan. Sari resepsionis Anda — Anda tetap bosnya.",
+    ctaTitle:"Lihat dia menjawab untuk bisnis <em>Anda</em>.",
+    ctaSub:"10 menit di tempat Anda. Kami tunjukkan langsung, di HP Anda sendiri.",
+    ctaBtn:"WhatsApp Justin", ctaNote:"Tidak perlu kontrak untuk melihat demo. Bahasa atau Inggris — terserah Anda.",
+    footer:"© 2025 Justy · Bot Hospitality Bali · Bali, Indonesia"
+  }
+};
+
+let pageLang = 'en';
+function setLang(l){
+  pageLang = l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(STR[l][k] !== undefined) el.innerHTML = STR[l][k];
+  });
+}
+
+document.getElementById('langToggle').addEventListener('click', ()=>{
+  setLang(pageLang==='en'?'id':'en');
 });
 
+// Init
 playScenario('spa');
 </script>
 </body>
