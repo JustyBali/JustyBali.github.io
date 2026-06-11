@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Justy — Your WhatsApp, answering every guest</title>
 <meta name="description" content="Justy answers your business WhatsApp like a trained receptionist. Any language, any hour. You stay in control.">
+<meta property="og:title" content="Justy — Your WhatsApp, answering every guest">
+<meta property="og:description" content="Watch it reply live. Any language, any hour. You stay in control.">
+<meta property="og:image" content="https://justybali.github.io/justylogo.png">
+<meta property="og:url" content="https://justybali.github.io/demo.html">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="justylogo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -41,6 +47,9 @@ header{
   border-bottom:1px solid rgba(13,53,59,.08);
 }
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:960px;margin:0 auto}
+.brand-lockup{display:flex;align-items:center;gap:10px}
+.logo-img{height:40px;width:auto;display:block}
+.footer-logo{height:52px;width:auto;display:block;margin:0 auto 12px;opacity:.9}
 .wordmark{font-family:'Libre Caslon Text',serif;font-size:1.35rem;letter-spacing:.14em;font-weight:700;color:var(--ink)}
 .wordmark span{color:var(--teal);opacity:.55;font-size:.6rem;display:block;letter-spacing:.28em;font-family:'Hanken Grotesk',sans-serif;font-weight:600;margin-top:-2px}
 .lang-toggle{display:flex;gap:2px;background:rgba(13,53,59,.07);border-radius:99px;padding:3px}
@@ -96,7 +105,7 @@ header{
   border-radius:28px;
   overflow:hidden;
   display:flex;flex-direction:column;
-  height:560px;
+  height:clamp(620px,80vh,740px);
 }
 .wa-header{
   background:var(--ink);color:#fff;display:flex;align-items:center;gap:10px;padding:12px 14px;flex-shrink:0;
@@ -212,7 +221,7 @@ footer{
   *{animation:none!important;transition:none!important}
 }
 @media (max-width:480px){
-  .screen{height:520px}
+  .screen{height:clamp(560px,74vh,680px)}
   .hero{padding-top:36px}
 }
 </style>
@@ -221,7 +230,10 @@ footer{
 
 <header>
   <div class="header-inner">
-    <div class="wordmark">JUSTY<span data-i18n="tagline">Balinese Hospitality Bot</span></div>
+    <div class="brand-lockup">
+      <img src="justylogo.png" alt="Justy logo" class="logo-img">
+      <div class="wordmark">JUSTY<span data-i18n="tagline">Balinese Hospitality Bot</span></div>
+    </div>
     <div class="lang-toggle" role="group" aria-label="Page language">
       <button id="btn-en" class="active" onclick="setPageLang('en')">EN</button>
       <button id="btn-id" onclick="setPageLang('id')">ID</button>
@@ -314,6 +326,7 @@ footer{
 </section>
 
 <footer>
+  <img src="justylogo.png" alt="" class="footer-logo">
   <div data-i18n="footer">JUSTY · Balinese Hospitality Bot · Bali, Indonesia</div>
 </footer>
 
